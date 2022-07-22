@@ -7,11 +7,14 @@ import net.minecraft.block.entity.*;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.inventory.SidedInventory;
+import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.ItemStack;
 import net.minecraft.screen.ScreenHandler;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.Hand;
-import net.minecraft.util.ItemScatterer;
+import net.minecraft.state.StateManager;
+import net.minecraft.state.property.BooleanProperty;
+import net.minecraft.state.property.DirectionProperty;
+import net.minecraft.state.property.Properties;
+import net.minecraft.util.*;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
@@ -27,8 +30,57 @@ import static net.minecraft.block.entity.HopperBlockEntity.getInventoryAt;
 
 public class HupperBlock extends BlockWithEntity implements BlockEntityProvider {
 
+    public static final DirectionProperty FACING = Properties.FACING;
+    public static final BooleanProperty ENABLED = Properties.ENABLED;
+    private static final VoxelShape DEFAULT_SHAPE = VoxelShapes.union(
+            createCuboidShape(0, 5, 0, 16, 6, 16),
+            createCuboidShape(14, 0, 0, 16, 5, 16),
+            createCuboidShape(0, 0, 0, 2, 5, 16),
+            createCuboidShape(2, 0, 0, 14, 5, 2),
+            createCuboidShape(2, 0, 14, 14, 5, 16),
+            createCuboidShape(4, 6, 4, 12, 12, 12),
+            createCuboidShape(6, 12, 6, 10, 16, 10)
+    );
+    private static final VoxelShape BOTTOM_SHAPE = VoxelShapes.union(
+            createCuboidShape(0, 5, 0, 16, 6, 16),
+            createCuboidShape(14, 0, 0, 16, 5, 16),
+            createCuboidShape(0, 0, 0, 2, 5, 16),
+            createCuboidShape(2, 0, 0, 14, 5, 2),
+            createCuboidShape(2, 0, 14, 14, 5, 16),
+            createCuboidShape(4, 6, 4, 12, 12, 12)
+    );
+
     public HupperBlock(Settings settings) {
         super(settings);
+        setDefaultState(this.stateManager.getDefaultState().with(Properties.FACING, Direction.NORTH));
+    }
+
+    @Override
+    public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
+        switch (state.get(FACING)) {
+            case DOWN: {
+                return DEFAULT_SHAPE;
+            }
+            case UP: {
+                return DEFAULT_SHAPE;
+            }
+            case NORTH: {
+                return VoxelShapes.union(
+                        BOTTOM_SHAPE,
+                        createCuboidShape(6, 8, 0, 10, 12, 4)
+                );
+            }
+            case SOUTH: {
+                return BOTTOM_SHAPE;
+            }
+            case WEST: {
+                return BOTTOM_SHAPE;
+            }
+            case EAST: {
+                return BOTTOM_SHAPE;
+            }
+        }
+        return DEFAULT_SHAPE;
     }
 
     public static void transferItems(World world, BlockPos blockPos) {
@@ -69,6 +121,16 @@ public class HupperBlock extends BlockWithEntity implements BlockEntityProvider 
     }
 
     @Override
+    public BlockState rotate(BlockState state, BlockRotation rotation) {
+        return (BlockState)state.with(FACING, rotation.rotate(state.get(FACING)));
+    }
+
+    @Override
+    public BlockState mirror(BlockState state, BlockMirror mirror) {
+        return state.rotate(mirror.getRotation(state.get(FACING)));
+    }
+
+    @Override
     public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
         return new HupperBlockEntity(pos, state);
     }
@@ -97,6 +159,11 @@ public class HupperBlock extends BlockWithEntity implements BlockEntityProvider 
         return ScreenHandler.calculateComparatorOutput(world.getBlockEntity(pos));
     }
 
+    @Override
+    protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
+        builder.add(FACING, ENABLED);
+    }
+
     public void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {
         if (!state.isOf(newState.getBlock())) {
             BlockEntity blockEntity = world.getBlockEntity(pos);
@@ -115,16 +182,10 @@ public class HupperBlock extends BlockWithEntity implements BlockEntityProvider 
     public void onBlockAdded(BlockState state, World world, BlockPos pos, BlockState oldState, boolean notify) {
         transferItems(world, pos);
     }
+
     @Override
-    public VoxelShape getOutlineShape(BlockState state, BlockView view, BlockPos pos, ShapeContext context){
-        return VoxelShapes.union(
-                createCuboidShape(0.0f, 5.0f, 0.0f, 16.0, 6.0f,16.0f),
-                createCuboidShape(14.0f, 0.0f, 0.0f, 16.0, 5.0f,16.0f),
-                createCuboidShape(0.0f, 0.0f, 0.0f, 2.0, 5.0f,16.0f),
-                createCuboidShape(2, 0, 0, 14, 5, 2),
-                createCuboidShape(2, 0, 14, 14, 5, 16),
-                createCuboidShape(4, 6, 4, 12, 12, 12),
-                createCuboidShape(6, 12, 6, 10, 16, 10)
-                );
+    public BlockState getPlacementState(ItemPlacementContext ctx) {
+        Direction direction = ctx.getSide().getOpposite();
+        return (BlockState)((BlockState)this.getDefaultState().with(FACING, direction.getAxis() == Direction.Axis.Y ? Direction.DOWN : direction)).with(ENABLED, true);
     }
 }

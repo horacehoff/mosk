@@ -1,5 +1,25 @@
 {
   "variants": {
-    "": { "model": "mosk:block/hupper_block" }
+    "facing=down": {
+      "model": "mosk:block/hupper_block"
+    },
+    "facing=up": {
+      "model": "mosk:block/hupper_block"
+    },
+    "facing=east": {
+      "model": "mosk:block/hupper_block_side",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "mosk:block/hupper_block_side"
+    },
+    "facing=south": {
+      "model": "mosk:block/hupper_block_side",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "mosk:block/hupper_block_side",
+      "y": 270
+    }
   }
 }
