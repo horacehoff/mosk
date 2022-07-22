@@ -56,13 +56,13 @@ public class MushroomParasiteBlock extends HorizontalFacingBlock {
                         createCuboidShape(-1, 12, 13, 9, 15, 14)//24
                         );*/
             case NORTH:
-                return VoxelShapes.union(createCuboidShape(5, 12, -11, 20, 15, 5));
+                return VoxelShapes.union(createCuboidShape(5, 12, -11, 21, 15, 5));
             case SOUTH:
-                return VoxelShapes.union(createCuboidShape(-4, 12, 11, 11, 15, 27));
+                return VoxelShapes.union(createCuboidShape(-4, 12, 11, 12, 15, 27));
             case EAST:
-                return VoxelShapes.union(createCuboidShape(11, 12, 5, 27, 15, 20));
+                return VoxelShapes.union(createCuboidShape(11, 12, 5, 27, 15, 21));
             case WEST:
-                return VoxelShapes.union(createCuboidShape(-11, 12, -4, 5, 15, 11));
+                return VoxelShapes.union(createCuboidShape(-11, 12, -4, 5, 15, 12));
             default:
                 return VoxelShapes.fullCube();
         }
