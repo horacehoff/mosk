@@ -4,7 +4,7 @@
 	"parent": "block/cube_all",
 	"textures": {
 		"0": "mosk:block/mushroom_parasite",
-		"particle": "mosk:mushroom_parasite"
+		"particle": "minecraft:block/brown_mushroom"
 	},
 	"elements": [
 		{
