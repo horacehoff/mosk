@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": { "model": "mosk:block/mushroom_parasite_up" },
+    "middle": { "model": "mosk:block/mushroom_parasite_middle" },
+    "down": { "model": "mosk:block/mushroom_parasite_down" }
+  }
+}
