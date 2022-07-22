@@ -2,7 +2,6 @@ package com.mango.anosk.mosk.items;
 
 import com.mango.anosk.mosk.blocks.Blocks;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
-import net.minecraft.block.Block;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
@@ -18,6 +17,6 @@ public class Items {
         Registry.register(Registry.ITEM, new Identifier("mosk", "mushroom_parasite_item_up"), new BlockItem(Blocks.MUSHROOM_PARASITE_UP_BLOCK, new Item.Settings().group(ItemGroup.MISC)));
         Registry.register(Registry.ITEM, new Identifier("mosk", "mushroom_parasite_item_middle"), new BlockItem(Blocks.MUSHROOM_PARASITE_MIDDLE_BLOCK, new Item.Settings().group(ItemGroup.MISC)));
         Registry.register(Registry.ITEM, new Identifier("mosk", "mushroom_parasite_item_down"), new BlockItem(Blocks.MUSHROOM_PARASITE_DOWN_BLOCK, new Item.Settings().group(ItemGroup.MISC)));
-
+        Registry.register(Registry.ITEM, new Identifier("mosk","mushroom_parasite"), new RopeItem(new Item.Settings().group(ItemGroup.MISC)));
     }
 }
