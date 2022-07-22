@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=south": { "model": "mosk:block/mushroom_parasite_block", "y":  0, "uvlock": false },
+    "facing=east": { "model": "mosk:block/mushroom_parasite_block", "y":  270, "uvlock": false },
+    "facing=north": { "model": "mosk:block/mushroom_parasite_block", "y":  180, "uvlock": false },
+    "facing=west": { "model": "mosk:block/mushroom_parasite_block", "y":  90, "uvlock": false }
+  }
+}

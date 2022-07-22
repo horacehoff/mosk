@@ -3,7 +3,7 @@
 	"parent": "block/cube_all",
 	"texture_size": [64, 64],
 	"textures": {
-		"0": "mosk:block/mushroom_parasite",
+		"0": "mosk:block/mushroom_parasite_block",
 		"particle": "block/brown_mushroom"
 	},
 	"elements": [
