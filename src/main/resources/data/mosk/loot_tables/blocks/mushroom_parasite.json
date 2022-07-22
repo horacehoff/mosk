@@ -11,7 +11,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "mosk:mushroom_parasite_item_up"
+          "name": "mosk:mushroom_parasite_item"
         }
       ],
       "rolls": 1.0
