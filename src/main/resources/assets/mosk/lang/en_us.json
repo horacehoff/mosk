@@ -4,5 +4,6 @@
   "item.mosk.rope_item": "Rope",
   "item.mosk.pulley_item": "Pulley",
   "block.mosk.pulley_block": "Pulley",
-  "block.mosk.birch_mushroom": "Birch Mushroom"
+  "block.mosk.birch_mushroom": "Birch Mushroom",
+  "block.mosk.mushroom_parasite_up": "Mushroom Parasite"
 }
