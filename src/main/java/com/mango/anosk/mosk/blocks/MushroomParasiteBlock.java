@@ -56,7 +56,7 @@ public class MushroomParasiteBlock extends HorizontalFacingBlock {
                         createCuboidShape(-1, 12, 13, 9, 15, 14)//24
                         );*/
             case NORTH:
-                return VoxelShapes.union(createCuboidShape(5, 12, -11, 21, 15, 5));
+                return VoxelShapes.union(createCuboidShape(5, 12, -12, 21, 15, 4));
             case SOUTH:
                 return VoxelShapes.union(createCuboidShape(-4, 12, 11, 12, 15, 27));
             case EAST:
