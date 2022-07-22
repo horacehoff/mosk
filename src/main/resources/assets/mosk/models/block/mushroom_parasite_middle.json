@@ -2,7 +2,7 @@
 	"credit": "Made with Blockbench",
 	"texture_size": [64, 64],
 	"textures": {
-		"0": "mosk:block/block/mushroom_parasite",
+		"0": "mosk:block/mushroom_parasite",
 		"particle": "mosk:block/mushroom_parasite"
 	},
 	"elements": [
