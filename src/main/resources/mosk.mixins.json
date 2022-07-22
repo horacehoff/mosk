@@ -1,0 +1,14 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.mango.anosk.mosk.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [
+    "AddBranchTreeDecoratorType"
+  ],
+  "client": [],
+  "server": [],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

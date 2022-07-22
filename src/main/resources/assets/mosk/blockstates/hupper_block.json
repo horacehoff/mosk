@@ -1,0 +1,5 @@
+{
+  "variants": {
+    "": { "model": "mosk:block/hupper_block" }
+  }
+}

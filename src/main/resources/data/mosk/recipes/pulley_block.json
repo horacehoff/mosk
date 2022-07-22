@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "___",
+    "/M/",
+    "___"
+  ],
+  "key": {
+    "_": {
+      "item": "minecraft:oak_slab"
+    },
+    "/": {
+      "item": "minecraft:stick"
+    },
+    "M": {
+      "item": "mosk:rope_item"
+    }
+  },
+  "result": {
+    "item": "mosk:pulley_block",
+    "count": 1
+  }
+}
+
