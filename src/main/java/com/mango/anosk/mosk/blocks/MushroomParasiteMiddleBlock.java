@@ -13,8 +13,8 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 
-public class MushroomParasiteBlock extends HorizontalFacingBlock {
-    public MushroomParasiteBlock(Settings settings) {
+public class MushroomParasiteMiddleBlock extends HorizontalFacingBlock {
+    public MushroomParasiteMiddleBlock(Settings settings) {
         super(settings);
         setDefaultState(this.stateManager.getDefaultState().with(Properties.HORIZONTAL_FACING, Direction.SOUTH));
     }

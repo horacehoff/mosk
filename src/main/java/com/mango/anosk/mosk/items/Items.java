@@ -15,6 +15,8 @@ public class Items {
     public static void initItems() {
         Registry.register(Registry.ITEM, new Identifier("mosk", "rope_item"), ROPE_ITEM);
         Registry.register(Registry.ITEM, new Identifier("mosk", "hupper_item"), new BlockItem(Blocks.HUPPER_BLOCK, new Item.Settings().group(ItemGroup.REDSTONE)));
-        Registry.register(Registry.ITEM, new Identifier("mosk", "mushroom_parasite_item"), new BlockItem(Blocks.MUSHROOM_PARASITE, new Item.Settings().group(ItemGroup.MISC)));
+        Registry.register(Registry.ITEM, new Identifier("mosk", "mushroom_parasite_item_up"), new BlockItem(Blocks.MUSHROOM_PARASITE_UP_BLOCK, new Item.Settings().group(ItemGroup.MISC)));
+        Registry.register(Registry.ITEM, new Identifier("mosk", "mushroom_parasite_item_middle"), new BlockItem(Blocks.MUSHROOM_PARASITE_MIDDLE_BLOCK, new Item.Settings().group(ItemGroup.MISC)));
+        Registry.register(Registry.ITEM, new Identifier("mosk", "mushroom_parasite_item_down"), new BlockItem(Blocks.MUSHROOM_PARASITE_DOWN_BLOCK, new Item.Settings().group(ItemGroup.MISC)));
     }
 }
