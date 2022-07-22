@@ -1,7 +1,16 @@
 {
   "variants": {
-    "": { "model": "mosk:block/mushroom_parasite_up" },
-    "middle": { "model": "mosk:block/mushroom_parasite_middle" },
-    "down": { "model": "mosk:block/mushroom_parasite_down" }
+    "up=south": { "model": "mosk:block/mushroom_parasite_up=south" },
+    "up=east": { "model": "mosk:block/mushroom_parasite_up=east" },
+    "up=north": { "model": "mosk:block/mushroom_parasite_up=north" },
+    "up=west": { "model": "mosk:block/mushroom_parasite_up=west" },
+    "middle=south": { "model": "mosk:block/mushroom_parasite_middle=south" },
+    "middle=east": { "model": "mosk:block/mushroom_parasite_middle=east" },
+    "middle=north": { "model": "mosk:block/mushroom_parasite_middle=north" },
+    "middle=west": { "model": "mosk:block/mushroom_parasite_middle=west" },
+    "down=south": { "model": "mosk:block/mushroom_parasite_down=south" },
+    "down=east": { "model": "mosk:block/mushroom_parasite_down=east" },
+    "down=north": { "model": "mosk:block/mushroom_parasite_down=north" },
+    "down=west": { "model": "mosk:block/mushroom_parasite_down=west" }
   }
 }
