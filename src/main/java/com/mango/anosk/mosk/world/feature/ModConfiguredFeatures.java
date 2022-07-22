@@ -14,7 +14,7 @@ import net.minecraft.world.gen.trunk.StraightTrunkPlacer;
 import java.util.List;
 
 public class ModConfiguredFeatures {
-    private static final BeehiveTreeDecorator BEES = new BeehiveTreeDecorator(0.25f);
+    private static final BeehiveTreeDecorator BEES = new BeehiveTreeDecorator(0.05f);
 //    private static final BranchTreeDecorator BRANCH = new BranchTreeDecorator(0.4f);
 
     public static final RegistryEntry<ConfiguredFeature<TreeFeatureConfig, ?>> NEW_BIRCH_TREE =
