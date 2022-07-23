@@ -22,6 +22,7 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.stream.IntStream;
 
@@ -55,6 +56,191 @@ public class HupperBlock extends BlockWithEntity implements BlockEntityProvider 
         setDefaultState(this.stateManager.getDefaultState().with(Properties.FACING, Direction.NORTH));
     }
 
+    public static void transferItems(World world, BlockPos blockPos, BlockState state) {
+        switch (state.get(FACING)) {
+            case UP:
+            case DOWN:
+                Inventory down_inventory = getInventoryAt(world, blockPos.add(0, -1, 0));
+                Inventory current_inventory = getInventoryAt(world, blockPos);
+                Inventory upper_inventory = getInventoryAt(world, blockPos.add(0, 1, 0));
+                if (upper_inventory != null && down_inventory != null && current_inventory != null && down_inventory.isEmpty() != Boolean.TRUE) {
+                    int to_remove = 0;
+                    for (int t = 0; t < down_inventory.size(); t++) {
+                        if (down_inventory.getStack(t) != ItemStack.EMPTY) {
+                            to_remove = t;
+                            break;
+                        }
+                    }
+                    for (int i = 0; i < upper_inventory.size(); i++) {
+                        if (upper_inventory.getStack(i) == ItemStack.EMPTY) {
+                            upper_inventory.setStack(i, down_inventory.getStack(to_remove));
+                            down_inventory.removeStack(to_remove);
+                            break;
+                        }
+                    }
+                } else if (upper_inventory != null && down_inventory != null && current_inventory != null && current_inventory.isEmpty() != Boolean.TRUE) {
+                    int to_remove = 0;
+                    for (int t = 0; t < 54; t++) {
+                        if (current_inventory.getStack(t) != ItemStack.EMPTY) {
+                            to_remove = t;
+                            break;
+                        }
+                    }
+                    for (int i = 0; i < 54; i++) {
+                        if (upper_inventory.getStack(i) == ItemStack.EMPTY) {
+                            upper_inventory.setStack(i, current_inventory.getStack(to_remove));
+                            current_inventory.removeStack(to_remove);
+                            break;
+                        }
+                    }
+                }
+            case NORTH:
+                down_inventory = getInventoryAt(world, blockPos.add(0, -1, 0));
+                current_inventory = getInventoryAt(world, blockPos);
+                upper_inventory = getInventoryAt(world, blockPos.add(0, 0, -1));
+                if (upper_inventory != null && down_inventory != null && current_inventory != null && down_inventory.isEmpty() != Boolean.TRUE) {
+                    int to_remove = 0;
+                    for (int t = 0; t < 54; t++) {
+                        if (down_inventory.getStack(t) != ItemStack.EMPTY) {
+                            to_remove = t;
+                            break;
+                        }
+                    }
+                    for (int i = 0; i < 54; i++) {
+                        if (upper_inventory.getStack(i) == ItemStack.EMPTY) {
+                            upper_inventory.setStack(i, down_inventory.getStack(to_remove));
+                            down_inventory.removeStack(to_remove);
+                            break;
+                        }
+                    }
+                } else if (upper_inventory != null && down_inventory != null && current_inventory != null && current_inventory.isEmpty() != Boolean.TRUE) {
+                    int to_remove = 0;
+                    for (int t = 0; t < 54; t++) {
+                        if (current_inventory.getStack(t) != ItemStack.EMPTY) {
+                            to_remove = t;
+                            break;
+                        }
+                    }
+                    for (int i = 0; i < 54; i++) {
+                        if (upper_inventory.getStack(i) == ItemStack.EMPTY) {
+                            upper_inventory.setStack(i, current_inventory.getStack(to_remove));
+                            current_inventory.removeStack(to_remove);
+                            break;
+                        }
+                    }
+                }
+            case SOUTH:
+                down_inventory = getInventoryAt(world, blockPos.add(0, -1, 0));
+                current_inventory = getInventoryAt(world, blockPos);
+                upper_inventory = getInventoryAt(world, blockPos.add(0, 0, 1));
+                if (upper_inventory != null && down_inventory != null && current_inventory != null && down_inventory.isEmpty() != Boolean.TRUE) {
+                    int to_remove = 0;
+                    for (int t = 0; t < 54; t++) {
+                        if (down_inventory.getStack(t) != ItemStack.EMPTY) {
+                            to_remove = t;
+                            break;
+                        }
+                    }
+                    for (int i = 0; i < 54; i++) {
+                        if (upper_inventory.getStack(i) == ItemStack.EMPTY) {
+                            upper_inventory.setStack(i, down_inventory.getStack(to_remove));
+                            down_inventory.removeStack(to_remove);
+                            break;
+                        }
+                    }
+                } else if (upper_inventory != null && down_inventory != null && current_inventory != null && current_inventory.isEmpty() != Boolean.TRUE) {
+                    int to_remove = 0;
+                    for (int t = 0; t < 54; t++) {
+                        if (current_inventory.getStack(t) != ItemStack.EMPTY) {
+                            to_remove = t;
+                            break;
+                        }
+                    }
+                    for (int i = 0; i < 54; i++) {
+                        if (upper_inventory.getStack(i) == ItemStack.EMPTY) {
+                            upper_inventory.setStack(i, current_inventory.getStack(to_remove));
+                            current_inventory.removeStack(to_remove);
+                            break;
+                        }
+                    }
+                }
+            case EAST:
+                down_inventory = getInventoryAt(world, blockPos.add(0, -1, 0));
+                current_inventory = getInventoryAt(world, blockPos);
+                upper_inventory = getInventoryAt(world, blockPos.add(1, 0, 0));
+                if (upper_inventory != null && down_inventory != null && current_inventory != null && down_inventory.isEmpty() != Boolean.TRUE) {
+                    int to_remove = 0;
+                    for (int t = 0; t < down_inventory.size(); t++) {
+                        if (down_inventory.getStack(t) != ItemStack.EMPTY) {
+                            to_remove = t;
+                            break;
+                        }
+                    }
+                    for (int i = 0; i < upper_inventory.size(); i++) {
+                        if (upper_inventory.getStack(i) == ItemStack.EMPTY) {
+                            upper_inventory.setStack(i, down_inventory.getStack(to_remove));
+                            down_inventory.removeStack(to_remove);
+                            break;
+                        }
+                    }
+                } else if (upper_inventory != null && down_inventory != null && current_inventory != null && current_inventory.isEmpty() != Boolean.TRUE) {
+                    int to_remove = 0;
+                    for (int t = 0; t < 54; t++) {
+                        if (current_inventory.getStack(t) != ItemStack.EMPTY) {
+                            to_remove = t;
+                            break;
+                        }
+                    }
+                    for (int i = 0; i < 54; i++) {
+                        if (upper_inventory.getStack(i) == ItemStack.EMPTY) {
+                            upper_inventory.setStack(i, current_inventory.getStack(to_remove));
+                            current_inventory.removeStack(to_remove);
+                            break;
+                        }
+                    }
+                }
+            case WEST:
+                down_inventory = getInventoryAt(world, blockPos.add(0, -1, 0));
+                current_inventory = getInventoryAt(world, blockPos);
+                upper_inventory = getInventoryAt(world, blockPos.add(-1, 0, 0));
+                if (upper_inventory != null && down_inventory != null && current_inventory != null && down_inventory.isEmpty() != Boolean.TRUE) {
+                    int to_remove = 0;
+                    for (int t = 0; t < down_inventory.size(); t++) {
+                        if (down_inventory.getStack(t) != ItemStack.EMPTY) {
+                            to_remove = t;
+                            break;
+                        }
+                    }
+                    for (int i = 0; i < upper_inventory.size(); i++) {
+                        if (upper_inventory.getStack(i) == ItemStack.EMPTY) {
+                            upper_inventory.setStack(i, down_inventory.getStack(to_remove));
+                            down_inventory.removeStack(to_remove);
+                            break;
+                        }
+                    }
+                } else if (upper_inventory != null && down_inventory != null && current_inventory != null && current_inventory.isEmpty() != Boolean.TRUE) {
+                    int to_remove = 0;
+                    for (int t = 0; t < 54; t++) {
+                        if (current_inventory.getStack(t) != ItemStack.EMPTY) {
+                            to_remove = t;
+                            break;
+                        }
+                    }
+                    for (int i = 0; i < 54; i++) {
+                        if (upper_inventory.getStack(i) == ItemStack.EMPTY) {
+                            upper_inventory.setStack(i, current_inventory.getStack(to_remove));
+                            current_inventory.removeStack(to_remove);
+                            break;
+                        }
+                    }
+                }
+        }
+    }
+
+    private static IntStream getAvailableSlots(Inventory inventory, Direction side) {
+        return inventory instanceof SidedInventory ? IntStream.of(((SidedInventory)inventory).getAvailableSlots(side)) : IntStream.range(0, inventory.size());
+    }
+
     @Override
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
         switch (state.get(FACING)) {
@@ -83,43 +269,6 @@ public class HupperBlock extends BlockWithEntity implements BlockEntityProvider 
         return DEFAULT_SHAPE;
     }
 
-    public static void transferItems(World world, BlockPos blockPos) {
-        Inventory down_inventory = getInventoryAt(world, blockPos.add(0, -1, 0));
-        Inventory current_inventory = getInventoryAt(world, blockPos);
-        Inventory upper_inventory = getInventoryAt(world, blockPos.add(0, 1, 0));
-        if (upper_inventory != null && down_inventory != null && current_inventory != null && down_inventory.isEmpty() != Boolean.TRUE) {
-            int to_remove = 0;
-            for (int t = 0; t < 54; t++) {
-                if (down_inventory.getStack(t) != ItemStack.EMPTY) {
-                    to_remove = t;
-                    break;
-                }
-            }
-            for (int i = 0; i < 54; i++) {
-                if (upper_inventory.getStack(i) == ItemStack.EMPTY ) {
-                    upper_inventory.setStack(i, down_inventory.getStack(to_remove));
-                    down_inventory.removeStack(to_remove);
-                    break;
-                }
-            }
-        } else if (upper_inventory != null && down_inventory != null && current_inventory != null && current_inventory.isEmpty() != Boolean.TRUE) {
-            int to_remove = 0;
-            for (int t = 0; t < 54; t++) {
-                if (current_inventory.getStack(t) != ItemStack.EMPTY) {
-                    to_remove = t;
-                    break;
-                }
-            }
-            for (int i = 0; i < 54; i++) {
-                if (upper_inventory.getStack(i) == ItemStack.EMPTY ) {
-                    upper_inventory.setStack(i, current_inventory.getStack(to_remove));
-                    current_inventory.removeStack(to_remove);
-                    break;
-                }
-            }
-        }
-    }
-
     @Override
     public BlockState rotate(BlockState state, BlockRotation rotation) {
         return (BlockState)state.with(FACING, rotation.rotate(state.get(FACING)));
@@ -134,24 +283,19 @@ public class HupperBlock extends BlockWithEntity implements BlockEntityProvider 
     public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
         return new HupperBlockEntity(pos, state);
     }
-    @Override
-    public ActionResult onUse(BlockState blockState, World world, BlockPos blockPos, PlayerEntity player, Hand hand, BlockHitResult blockHitResult) {
-        transferItems(world, blockPos);
-        if (world.isClient) return ActionResult.SUCCESS;
-        Inventory blockEntity = (Inventory) world.getBlockEntity(blockPos);
-        return ActionResult.SUCCESS;
-    }
+
+//    @Override
+//    public ActionResult onUse(BlockState blockState, World world, BlockPos blockPos, PlayerEntity player, Hand hand, BlockHitResult blockHitResult) {
+//        transferItems(world, blockPos, blockState);
+//        if (world.isClient) return ActionResult.SUCCESS;
+//        Inventory blockEntity = (Inventory) world.getBlockEntity(blockPos);
+//        return ActionResult.SUCCESS;
+//    }
     @Override
     public BlockRenderType getRenderType(BlockState state) {
         return BlockRenderType.MODEL;
     }
-//    @Override
-//    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
-//        return checkType(type, BlockEntities.HUPPER_BLOCK_ENTITY, (world1, pos, state1, be) -> HupperBlockEntity.tick(world1, pos, state1, be));
-//    }
-    private static IntStream getAvailableSlots(Inventory inventory, Direction side) {
-        return inventory instanceof SidedInventory ? IntStream.of(((SidedInventory)inventory).getAvailableSlots(side)) : IntStream.range(0, inventory.size());
-    }
+
     public boolean hasComparatorOutput(BlockState state) {
         return true;
     }
@@ -176,11 +320,35 @@ public class HupperBlock extends BlockWithEntity implements BlockEntityProvider 
     }
     @Override
     public void neighborUpdate(BlockState state, World world, BlockPos pos, Block sourceBlock, BlockPos sourcePos, boolean notify) {
+        System.out.println(world.getBlockState(pos));
         if (world.isReceivingRedstonePower(pos)) {
-            transferItems(world, pos);
+            transferItems(world, pos, state);
         } else if (world.isReceivingRedstonePower(pos.add(0, -1, 0))) {
-            transferItems(world, pos);
+            transferItems(world, pos, state);
+        } else if (world.getBlockState(pos.add(0, -1, 0)) == Blocks.HUPPER_BLOCK.getDefaultState() && world.isReceivingRedstonePower(pos.add(0, -2, 0))) {
+            transferItems(world, pos, state);
+        } else if (world.getBlockState(pos.add(0, -1, 0)) == Blocks.HUPPER_BLOCK.getDefaultState() &&
+                world.getBlockState(pos.add(0, -2, 0)) == Blocks.HUPPER_BLOCK.getDefaultState() &&
+                world.isReceivingRedstonePower(pos.add(0, -3, 0))
+        ) {
+            transferItems(world, pos, state);
+        } else if (world.getBlockState(pos.add(0, -1, 0)) == Blocks.HUPPER_BLOCK.getDefaultState() &&
+                world.getBlockState(pos.add(0, -2, 0)) == Blocks.HUPPER_BLOCK.getDefaultState() &&
+                world.getBlockState(pos.add(0, -3, 0)) == Blocks.HUPPER_BLOCK.getDefaultState() &&
+                world.isReceivingRedstonePower(pos.add(0, -4, 0))
+        ) {
+            transferItems(world, pos, state);
+        } else if (world.getBlockState(pos.add(0, -1, 0)) == Blocks.HUPPER_BLOCK.getDefaultState() &&
+                world.getBlockState(pos.add(0, -2, 0)) == Blocks.HUPPER_BLOCK.getDefaultState() &&
+                world.getBlockState(pos.add(0, -3, 0)) == Blocks.HUPPER_BLOCK.getDefaultState() &&
+                world.getBlockState(pos.add(0, -4, 0)) == Blocks.HUPPER_BLOCK.getDefaultState() &&
+                world.isReceivingRedstonePower(pos.add(0, -5, 0))
+        ) {
+            transferItems(world, pos, state);
+        } else if (world.isReceivingRedstonePower(pos.add(0, -1, 0))) {
+            transferItems(world, pos, state);
         }
+
     }
 
     @Override

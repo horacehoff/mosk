@@ -10,10 +10,9 @@ import net.minecraft.world.biome.OverworldBiomeCreator;
 
 
 public class ModBiomes {
-    public static final RegistryKey<Biome> HIGH_BIRCH_FOREST = RegistryKey.of(Registry.BIOME_KEY, new Identifier(Mosk.MOD_ID, "high_birch_forest"));
-
+// Declare biomes here
 
     public static void initBiomes() {
-        Registry.register(BuiltinRegistries.BIOME, HIGH_BIRCH_FOREST.getValue(), OverworldBiomeCreator.createPlains(false, false, false));
+        // Register biomes here
     }
 }
