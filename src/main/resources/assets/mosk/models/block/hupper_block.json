@@ -2,8 +2,8 @@
 	"parent": "block/cube_all",
 	"ambientocclusion": false,
 	"textures": {
-		"1": "mosk:block/hupper_block",
-		"particle": "mosk:block/hupper_block"
+		"1": "minecraft:block/furnace_top",
+		"particle": "minecraft:block/furnace_top"
 	},
 	"elements": [
 		{
