@@ -178,6 +178,8 @@ public class HupperBlock extends BlockWithEntity implements BlockEntityProvider 
     public void neighborUpdate(BlockState state, World world, BlockPos pos, Block sourceBlock, BlockPos sourcePos, boolean notify) {
         if (world.isReceivingRedstonePower(pos)) {
             transferItems(world, pos);
+        } else if (world.isReceivingRedstonePower(pos.add(0, -1, 0))) {
+            transferItems(world, pos);
         }
     }
 
