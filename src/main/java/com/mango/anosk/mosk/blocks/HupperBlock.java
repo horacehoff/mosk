@@ -344,7 +344,7 @@ public class HupperBlock extends BlockWithEntity {
     }
 
     private void updateEnabled(World world, BlockPos pos, BlockState state) {
-        boolean bl = !world.isReceivingRedstonePower(pos);
+        boolean bl = world.isReceivingRedstonePower(pos);
         if (bl != (Boolean)state.get(ENABLED)) {
             world.setBlockState(pos, (BlockState)state.with(ENABLED, bl), 4);
         }
