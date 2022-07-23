@@ -1,4 +1,4 @@
-package com.mango.anosk.mosk.blocks.entity;
+package com.mango.anosk.mosk.blocks.interfaces;
 
 import net.minecraft.inventory.Inventory;
 

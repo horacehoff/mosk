@@ -1,7 +1,7 @@
 package com.mango.anosk.mosk.blocks.entity;
 
 import com.mango.anosk.mosk.blocks.HupperBlock;
-import com.mango.anosk.mosk.blocks.ImplementedInventory;
+import com.mango.anosk.mosk.blocks.interfaces.Hupper;
 import com.mango.anosk.mosk.gui.HupperScreenHandler;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.*;
@@ -14,26 +14,19 @@ import net.minecraft.inventory.Inventory;
 import net.minecraft.inventory.SidedInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
-import net.minecraft.network.Packet;
-import net.minecraft.network.listener.ClientPlayPacketListener;
-import net.minecraft.network.packet.s2c.play.BlockEntityUpdateS2CPacket;
 import net.minecraft.predicate.entity.EntityPredicates;
-import net.minecraft.screen.HopperScreenHandler;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.text.Text;
 import net.minecraft.util.collection.DefaultedList;
-import net.minecraft.util.function.BooleanBiFunction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Direction;
-import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Iterator;
 import java.util.List;
 import java.util.function.BooleanSupplier;
-import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class HupperBlockEntity extends LootableContainerBlockEntity implements Hupper {

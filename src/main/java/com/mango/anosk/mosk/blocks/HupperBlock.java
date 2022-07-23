@@ -347,6 +347,16 @@ public class HupperBlock extends BlockWithEntity {
         boolean bl = world.isReceivingRedstonePower(pos);
         if (bl != (Boolean)state.get(ENABLED)) {
             world.setBlockState(pos, (BlockState)state.with(ENABLED, bl), 4);
+        } else if (world.getBlockEntity(pos.add(0, -1, 0)) instanceof HupperBlockEntity) {
+            world.setBlockState(pos, (BlockState)state.with(ENABLED, bl), 4);
+        } else if (world.getBlockEntity(pos.add(-1, 0, 0)) instanceof HupperBlockEntity) {
+            world.setBlockState(pos, (BlockState)state.with(ENABLED, bl), 4);
+        } else if (world.getBlockEntity(pos.add(1, 0, 0)) instanceof HupperBlockEntity) {
+            world.setBlockState(pos, (BlockState)state.with(ENABLED, bl), 4);
+        } else if (world.getBlockEntity(pos.add(0, 0, -1)) instanceof HupperBlockEntity) {
+            world.setBlockState(pos, (BlockState)state.with(ENABLED, bl), 4);
+        } else if (world.getBlockEntity(pos.add(0, 0, 1)) instanceof HupperBlockEntity) {
+            world.setBlockState(pos, (BlockState)state.with(ENABLED, bl), 4);
         }
 
     }
