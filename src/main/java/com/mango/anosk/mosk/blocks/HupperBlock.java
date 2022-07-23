@@ -4,12 +4,14 @@ import com.mango.anosk.mosk.blocks.entity.BlockEntities;
 import com.mango.anosk.mosk.blocks.entity.HupperBlockEntity;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.*;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.inventory.SidedInventory;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.ItemStack;
 import net.minecraft.screen.ScreenHandler;
+import net.minecraft.stat.Stats;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.DirectionProperty;
@@ -29,7 +31,7 @@ import java.util.stream.IntStream;
 import static net.minecraft.block.entity.HopperBlockEntity.getInventoryAt;
 
 
-public class HupperBlock extends BlockWithEntity implements BlockEntityProvider {
+public class HupperBlock extends BlockWithEntity {
 
     public static final DirectionProperty FACING = Properties.FACING;
     public static final BooleanProperty ENABLED = Properties.ENABLED;
@@ -269,6 +271,27 @@ public class HupperBlock extends BlockWithEntity implements BlockEntityProvider 
         return DEFAULT_SHAPE;
     }
 
+    @Nullable
+    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
+        return world.isClient ? null : checkType(type, BlockEntities.HUPPER_BLOCK_ENTITY, HupperBlockEntity::serverTick);
+    }
+
+    public void onPlaced(World world, BlockPos pos, BlockState state, LivingEntity placer, ItemStack itemStack) {
+        if (itemStack.hasCustomName()) {
+            BlockEntity blockEntity = world.getBlockEntity(pos);
+            if (blockEntity instanceof HupperBlockEntity) {
+                ((HupperBlockEntity)blockEntity).setCustomName(itemStack.getName());
+            }
+        }
+
+    }
+
+    public void onBlockAdded(BlockState state, World world, BlockPos pos, BlockState oldState, boolean notify) {
+        if (!oldState.isOf(state.getBlock())) {
+            this.updateEnabled(world, pos, state);
+        }
+    }
+
     @Override
     public BlockState rotate(BlockState state, BlockRotation rotation) {
         return (BlockState)state.with(FACING, rotation.rotate(state.get(FACING)));
@@ -303,6 +326,7 @@ public class HupperBlock extends BlockWithEntity implements BlockEntityProvider 
         return ScreenHandler.calculateComparatorOutput(world.getBlockEntity(pos));
     }
 
+
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
         builder.add(FACING, ENABLED);
@@ -318,37 +342,60 @@ public class HupperBlock extends BlockWithEntity implements BlockEntityProvider 
             super.onStateReplaced(state, world, pos, newState, moved);
         }
     }
-    @Override
-    public void neighborUpdate(BlockState state, World world, BlockPos pos, Block sourceBlock, BlockPos sourcePos, boolean notify) {
-        System.out.println(world.getBlockState(pos));
-        if (world.isReceivingRedstonePower(pos)) {
-            transferItems(world, pos, state);
-        } else if (world.isReceivingRedstonePower(pos.add(0, -1, 0))) {
-            transferItems(world, pos, state);
-        } else if (world.getBlockState(pos.add(0, -1, 0)) == Blocks.HUPPER_BLOCK.getDefaultState() && world.isReceivingRedstonePower(pos.add(0, -2, 0))) {
-            transferItems(world, pos, state);
-        } else if (world.getBlockState(pos.add(0, -1, 0)) == Blocks.HUPPER_BLOCK.getDefaultState() &&
-                world.getBlockState(pos.add(0, -2, 0)) == Blocks.HUPPER_BLOCK.getDefaultState() &&
-                world.isReceivingRedstonePower(pos.add(0, -3, 0))
-        ) {
-            transferItems(world, pos, state);
-        } else if (world.getBlockState(pos.add(0, -1, 0)) == Blocks.HUPPER_BLOCK.getDefaultState() &&
-                world.getBlockState(pos.add(0, -2, 0)) == Blocks.HUPPER_BLOCK.getDefaultState() &&
-                world.getBlockState(pos.add(0, -3, 0)) == Blocks.HUPPER_BLOCK.getDefaultState() &&
-                world.isReceivingRedstonePower(pos.add(0, -4, 0))
-        ) {
-            transferItems(world, pos, state);
-        } else if (world.getBlockState(pos.add(0, -1, 0)) == Blocks.HUPPER_BLOCK.getDefaultState() &&
-                world.getBlockState(pos.add(0, -2, 0)) == Blocks.HUPPER_BLOCK.getDefaultState() &&
-                world.getBlockState(pos.add(0, -3, 0)) == Blocks.HUPPER_BLOCK.getDefaultState() &&
-                world.getBlockState(pos.add(0, -4, 0)) == Blocks.HUPPER_BLOCK.getDefaultState() &&
-                world.isReceivingRedstonePower(pos.add(0, -5, 0))
-        ) {
-            transferItems(world, pos, state);
-        } else if (world.isReceivingRedstonePower(pos.add(0, -1, 0))) {
-            transferItems(world, pos, state);
+
+    private void updateEnabled(World world, BlockPos pos, BlockState state) {
+        boolean bl = !world.isReceivingRedstonePower(pos);
+        if (bl != (Boolean)state.get(ENABLED)) {
+            world.setBlockState(pos, (BlockState)state.with(ENABLED, bl), 4);
         }
 
+    }
+
+    @Override
+    public void neighborUpdate(BlockState state, World world, BlockPos pos, Block sourceBlock, BlockPos sourcePos, boolean notify) {
+//        System.out.println(world.getBlockState(pos));
+//        if (world.isReceivingRedstonePower(pos)) {
+//            transferItems(world, pos, state);
+//        } else if (world.isReceivingRedstonePower(pos.add(0, -1, 0))) {
+//            transferItems(world, pos, state);
+//        } else if (world.getBlockState(pos.add(0, -1, 0)) == Blocks.HUPPER_BLOCK.getDefaultState() && world.isReceivingRedstonePower(pos.add(0, -2, 0))) {
+//            transferItems(world, pos, state);
+//        } else if (world.getBlockState(pos.add(0, -1, 0)) == Blocks.HUPPER_BLOCK.getDefaultState() &&
+//                world.getBlockState(pos.add(0, -2, 0)) == Blocks.HUPPER_BLOCK.getDefaultState() &&
+//                world.isReceivingRedstonePower(pos.add(0, -3, 0))
+//        ) {
+//            transferItems(world, pos, state);
+//        } else if (world.getBlockState(pos.add(0, -1, 0)) == Blocks.HUPPER_BLOCK.getDefaultState() &&
+//                world.getBlockState(pos.add(0, -2, 0)) == Blocks.HUPPER_BLOCK.getDefaultState() &&
+//                world.getBlockState(pos.add(0, -3, 0)) == Blocks.HUPPER_BLOCK.getDefaultState() &&
+//                world.isReceivingRedstonePower(pos.add(0, -4, 0))
+//        ) {
+//            transferItems(world, pos, state);
+//        } else if (world.getBlockState(pos.add(0, -1, 0)) == Blocks.HUPPER_BLOCK.getDefaultState() &&
+//                world.getBlockState(pos.add(0, -2, 0)) == Blocks.HUPPER_BLOCK.getDefaultState() &&
+//                world.getBlockState(pos.add(0, -3, 0)) == Blocks.HUPPER_BLOCK.getDefaultState() &&
+//                world.getBlockState(pos.add(0, -4, 0)) == Blocks.HUPPER_BLOCK.getDefaultState() &&
+//                world.isReceivingRedstonePower(pos.add(0, -5, 0))
+//        ) {
+//            transferItems(world, pos, state);
+//        } else if (world.isReceivingRedstonePower(pos.add(0, -1, 0))) {
+//            transferItems(world, pos, state);
+//        }
+        this.updateEnabled(world, pos, state);
+
+    }
+
+    public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
+        if (world.isClient) {
+            return ActionResult.SUCCESS;
+        } else {
+            BlockEntity blockEntity = world.getBlockEntity(pos);
+            if (blockEntity instanceof HupperBlockEntity) {
+                player.openHandledScreen((HupperBlockEntity)blockEntity);
+            }
+
+            return ActionResult.CONSUME;
+        }
     }
 
     @Override

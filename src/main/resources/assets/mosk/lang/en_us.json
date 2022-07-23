@@ -6,5 +6,6 @@
   "block.mosk.pulley_block": "Pulley",
   "block.mosk.birch_mushroom": "Birch Mushroom",
   "block.mosk.mushroom_parasite_block": "Mushroom Parasite",
-  "item.mosk.mushroom_parasite_block": "Mushroom Parasite"
+  "item.mosk.mushroom_parasite_block": "Mushroom Parasite",
+  "container.hupper": "Hupper"
 }
