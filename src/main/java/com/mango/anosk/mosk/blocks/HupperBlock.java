@@ -363,34 +363,6 @@ public class HupperBlock extends BlockWithEntity {
 
     @Override
     public void neighborUpdate(BlockState state, World world, BlockPos pos, Block sourceBlock, BlockPos sourcePos, boolean notify) {
-//        System.out.println(world.getBlockState(pos));
-//        if (world.isReceivingRedstonePower(pos)) {
-//            transferItems(world, pos, state);
-//        } else if (world.isReceivingRedstonePower(pos.add(0, -1, 0))) {
-//            transferItems(world, pos, state);
-//        } else if (world.getBlockState(pos.add(0, -1, 0)) == Blocks.HUPPER_BLOCK.getDefaultState() && world.isReceivingRedstonePower(pos.add(0, -2, 0))) {
-//            transferItems(world, pos, state);
-//        } else if (world.getBlockState(pos.add(0, -1, 0)) == Blocks.HUPPER_BLOCK.getDefaultState() &&
-//                world.getBlockState(pos.add(0, -2, 0)) == Blocks.HUPPER_BLOCK.getDefaultState() &&
-//                world.isReceivingRedstonePower(pos.add(0, -3, 0))
-//        ) {
-//            transferItems(world, pos, state);
-//        } else if (world.getBlockState(pos.add(0, -1, 0)) == Blocks.HUPPER_BLOCK.getDefaultState() &&
-//                world.getBlockState(pos.add(0, -2, 0)) == Blocks.HUPPER_BLOCK.getDefaultState() &&
-//                world.getBlockState(pos.add(0, -3, 0)) == Blocks.HUPPER_BLOCK.getDefaultState() &&
-//                world.isReceivingRedstonePower(pos.add(0, -4, 0))
-//        ) {
-//            transferItems(world, pos, state);
-//        } else if (world.getBlockState(pos.add(0, -1, 0)) == Blocks.HUPPER_BLOCK.getDefaultState() &&
-//                world.getBlockState(pos.add(0, -2, 0)) == Blocks.HUPPER_BLOCK.getDefaultState() &&
-//                world.getBlockState(pos.add(0, -3, 0)) == Blocks.HUPPER_BLOCK.getDefaultState() &&
-//                world.getBlockState(pos.add(0, -4, 0)) == Blocks.HUPPER_BLOCK.getDefaultState() &&
-//                world.isReceivingRedstonePower(pos.add(0, -5, 0))
-//        ) {
-//            transferItems(world, pos, state);
-//        } else if (world.isReceivingRedstonePower(pos.add(0, -1, 0))) {
-//            transferItems(world, pos, state);
-//        }
         this.updateEnabled(world, pos, state);
 
     }
