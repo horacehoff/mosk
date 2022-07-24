@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "mosk:block/pulley_block",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "mosk:block/pulley_block"
+    },
+    "facing=south": {
+      "model": "mosk:block/pulley_block",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "mosk:block/pulley_block",
+      "y": 270
+    }
+  }
+}

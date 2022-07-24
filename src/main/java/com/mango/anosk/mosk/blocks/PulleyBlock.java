@@ -1,9 +1,8 @@
 package com.mango.anosk.mosk.blocks;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.HorizontalFacingBlock;
-import net.minecraft.block.ShapeContext;
+import com.mango.anosk.mosk.blocks.entity.PulleyBlockEntity;
+import net.minecraft.block.*;
+import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.Properties;
@@ -13,8 +12,8 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 
-public class MushroomParasiteBlock extends HorizontalFacingBlock {
-    public MushroomParasiteBlock(Settings settings) {
+public class PulleyBlock extends HorizontalFacingBlock implements BlockEntityProvider{
+    public PulleyBlock(Settings settings) {
         super(settings);
         setDefaultState(this.stateManager.getDefaultState().with(Properties.HORIZONTAL_FACING, Direction.SOUTH));
     }
@@ -55,10 +54,10 @@ public class MushroomParasiteBlock extends HorizontalFacingBlock {
                         createCuboidShape(1, 12, 12, 7, 15, 13),
                         createCuboidShape(-1, 12, 13, 9, 15, 14)//24
                         );*/
-            case NORTH -> VoxelShapes.union(createCuboidShape(5, 12, -12, 21, 15, 4));
-            case SOUTH -> VoxelShapes.union(createCuboidShape(-4, 12, 11, 12, 15, 27));
-            case EAST -> VoxelShapes.union(createCuboidShape(11, 12, 4, 27, 15, 20));
-            case WEST -> VoxelShapes.union(createCuboidShape(-11, 12, -5, 5, 15, 11));
+            case NORTH -> VoxelShapes.union(createCuboidShape(-8, 0, 0, 24, 13, 16));
+            case SOUTH -> VoxelShapes.union(createCuboidShape(-8, 0, 0, 24, 13, 16));
+            case EAST -> VoxelShapes.union(createCuboidShape(0, 0, -8, 16, 13, 24));
+            case WEST -> VoxelShapes.union(createCuboidShape(0, 0, -8, 16, 13, 24));
             default -> VoxelShapes.fullCube();
         };
     }
@@ -66,5 +65,10 @@ public class MushroomParasiteBlock extends HorizontalFacingBlock {
     @Override
     public BlockState getPlacementState(ItemPlacementContext ctx) {
         return (BlockState)this.getDefaultState().with(Properties.HORIZONTAL_FACING, ctx.getPlayerFacing());
+    }
+
+    @Override
+    public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
+        return new PulleyBlockEntity(pos, state);
     }
 }
