@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class MushroomTreeDecorator extends BeehiveTreeDecorator {
-    public static final Codec<MushroomTreeDecorator> CODEC = Codec.unit(() -> new MushroomTreeDecorator(0.5f));
+    public static final Codec<MushroomTreeDecorator> CODEC = Codec.unit(() -> new MushroomTreeDecorator(0.55f));
     public static final TreeDecoratorType<MushroomTreeDecorator> BRANCH = TreeDecoratorTypeMixin.invokeTwoRegister("mushroom", MushroomTreeDecorator.CODEC);
     private final float probability;
 

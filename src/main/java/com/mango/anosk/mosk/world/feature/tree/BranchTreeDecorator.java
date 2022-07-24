@@ -16,6 +16,7 @@ import net.minecraft.block.Blocks;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.entity.EntityType;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.state.State;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.random.Random;
@@ -30,7 +31,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class BranchTreeDecorator extends BeehiveTreeDecorator {
-    public static final Codec<BranchTreeDecorator> CODEC = Codec.unit(() -> new BranchTreeDecorator(0.5f));
+    public static final Codec<BranchTreeDecorator> CODEC = Codec.unit(() -> new BranchTreeDecorator(0.75f));
     public static final TreeDecoratorType<BranchTreeDecorator> BRANCH = TreeDecoratorTypeMixin.invokeRegister("branch", BranchTreeDecorator.CODEC);
     private final float probability;
 
@@ -63,6 +64,6 @@ public class BranchTreeDecorator extends BeehiveTreeDecorator {
         if (optional.isEmpty()) {
             return;
         }
-        generator.replace(optional.get().add(0, -1*ThreadLocalRandom.current().nextInt(2, 4 + 1), 0), (BlockState)Blocks.BIRCH_LOG.getDefaultState());
+        generator.replace(optional.get().add(0, -1*ThreadLocalRandom.current().nextInt(2, 4 + 1), 0), (BlockState)Blocks.BIRCH_LOG.getStateManager().getStates().stream().findFirst().get());
     }
 }
