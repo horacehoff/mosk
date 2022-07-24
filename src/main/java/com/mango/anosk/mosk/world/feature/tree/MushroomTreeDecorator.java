@@ -1,41 +1,30 @@
 package com.mango.anosk.mosk.world.feature.tree;
 
+import com.mango.anosk.mosk.blocks.Blocks;
 import com.mango.anosk.mosk.mixin.TreeDecoratorTypeMixin;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import net.minecraft.block.BlockState;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
+import net.minecraft.util.math.random.Random;
+import net.minecraft.world.gen.treedecorator.BeehiveTreeDecorator;
+import net.minecraft.world.gen.treedecorator.TreeDecoratorType;
+
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-import net.minecraft.block.BeehiveBlock;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.entity.BlockEntityType;
-import net.minecraft.entity.EntityType;
-import net.minecraft.nbt.NbtCompound;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Direction;
-import net.minecraft.util.math.random.Random;
-import net.minecraft.util.registry.Registry;
-import net.minecraft.world.gen.treedecorator.BeehiveTreeDecorator;
-import net.minecraft.world.gen.treedecorator.TreeDecorator;
-import net.minecraft.world.gen.treedecorator.TreeDecoratorType;
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
-public class BranchTreeDecorator extends BeehiveTreeDecorator {
-    public static final Codec<BranchTreeDecorator> CODEC = Codec.unit(() -> new BranchTreeDecorator(0.5f));
-    public static final TreeDecoratorType<BranchTreeDecorator> BRANCH = TreeDecoratorTypeMixin.invokeRegister("branch", BranchTreeDecorator.CODEC);
+public class MushroomTreeDecorator extends BeehiveTreeDecorator {
+    public static final Codec<MushroomTreeDecorator> CODEC = Codec.unit(() -> new MushroomTreeDecorator(0.5f));
+    public static final TreeDecoratorType<MushroomTreeDecorator> BRANCH = TreeDecoratorTypeMixin.invokeTwoRegister("mushroom", MushroomTreeDecorator.CODEC);
     private final float probability;
 
 
-    public BranchTreeDecorator(float probability) {
+    public MushroomTreeDecorator(float probability) {
         super(probability);
         this.probability = probability;
     }
@@ -46,7 +35,7 @@ public class BranchTreeDecorator extends BeehiveTreeDecorator {
     }
 
     @Override
-    public void generate(TreeDecorator.Generator generator) {
+    public void generate(Generator generator) {
         Random random = generator.getRandom();
         if (random.nextFloat() >= this.probability) {
             return;
@@ -63,6 +52,6 @@ public class BranchTreeDecorator extends BeehiveTreeDecorator {
         if (optional.isEmpty()) {
             return;
         }
-        generator.replace(optional.get().add(0, -1*ThreadLocalRandom.current().nextInt(2, 4 + 1), 0), (BlockState)Blocks.BIRCH_LOG.getDefaultState());
+        generator.replace(optional.get().add(0, -1*ThreadLocalRandom.current().nextInt(1, 3 + 1), 0), (BlockState) Blocks.MUSHROOM_PARASITE_BLOCK.getDefaultState());
     }
 }

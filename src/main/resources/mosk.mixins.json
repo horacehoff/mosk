@@ -4,7 +4,7 @@
   "package": "com.mango.anosk.mosk.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
-    "AddBranchTreeDecoratorType"
+    "TreeDecoratorTypeMixin"
   ],
   "client": [],
   "server": [],
