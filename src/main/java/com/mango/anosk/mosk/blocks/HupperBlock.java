@@ -259,13 +259,22 @@ public class HupperBlock extends BlockWithEntity {
                 );
             }
             case SOUTH: {
-                return BOTTOM_SHAPE;
+                return VoxelShapes.union(
+                        BOTTOM_SHAPE,
+                        createCuboidShape(6, 8, 12, 10, 12, 16)
+                );
             }
             case WEST: {
-                return BOTTOM_SHAPE;
+                return VoxelShapes.union(
+                        BOTTOM_SHAPE,
+                        createCuboidShape(0, 8, 6, 4, 12, 10)
+                );
             }
             case EAST: {
-                return BOTTOM_SHAPE;
+                return VoxelShapes.union(
+                        BOTTOM_SHAPE,
+                        createCuboidShape(12, 8, 6, 16, 12, 10)
+                );
             }
         }
         return DEFAULT_SHAPE;
