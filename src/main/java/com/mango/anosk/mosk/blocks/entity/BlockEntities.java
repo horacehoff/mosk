@@ -10,10 +10,12 @@ import net.minecraft.util.registry.Registry;
 
 public class BlockEntities {
     public static BlockEntityType<HupperBlockEntity> HUPPER_BLOCK_ENTITY;
+    public static BlockEntityType<HupperBlockEntity> PULLEY_BLOCK_ENTITY;
 
 
 
     public static void InitEntities() {
         HUPPER_BLOCK_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, "mosk:hupper_block_entity", FabricBlockEntityTypeBuilder.create(HupperBlockEntity::new, Blocks.HUPPER_BLOCK).build(null));
+        PULLEY_BLOCK_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, "mosk:pulley_block_entity", FabricBlockEntityTypeBuilder.create(HupperBlockEntity::new, Blocks.PULLEY_BLOCK).build(null));
     }
 }
