@@ -22,8 +22,9 @@ public abstract class Blocks {
             .nonOpaque()
     );
 
-    public static final PulleyBlock PULLEY_BLOCK = new PulleyBlock(FabricBlockSettings.of(Material.WOOD).strength(2.0f));
-
+    public static final PulleyBlock PULLEY_BLOCK = new PulleyBlock(FabricBlockSettings
+            .of(Material.WOOD)
+            .strength(2.0f));
 
     public static void initBlocks() {
         Registry.register(Registry.BLOCK, new Identifier("mosk", "hupper_block"), HUPPER_BLOCK);

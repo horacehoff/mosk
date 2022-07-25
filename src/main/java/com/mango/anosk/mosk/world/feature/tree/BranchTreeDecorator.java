@@ -32,7 +32,7 @@ import java.util.stream.Stream;
 
 public class BranchTreeDecorator extends BeehiveTreeDecorator {
     public static final Codec<BranchTreeDecorator> CODEC = Codec.unit(() -> new BranchTreeDecorator(0.75f));
-    public static final TreeDecoratorType<BranchTreeDecorator> BRANCH = TreeDecoratorTypeMixin.invokeRegister("branch", BranchTreeDecorator.CODEC);
+    public static final TreeDecoratorType<BranchTreeDecorator> BRANCH = TreeDecoratorTypeMixin.invokeBranchRegister("branch", BranchTreeDecorator.CODEC);
     private final float probability;
 
 

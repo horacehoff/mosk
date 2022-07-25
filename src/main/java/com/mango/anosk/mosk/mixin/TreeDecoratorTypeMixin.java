@@ -17,12 +17,12 @@ import org.spongepowered.asm.mixin.gen.Invoker;
 public interface TreeDecoratorTypeMixin<P extends TreeDecorator> {
 
     @Invoker("register")
-    public static <P extends TreeDecorator> TreeDecoratorType<P> invokeRegister(String id, Codec<BranchTreeDecorator> codec) {
+    public static <P extends TreeDecorator> TreeDecoratorType<P> invokeBranchRegister(String id, Codec<BranchTreeDecorator> codec) {
         throw new AssertionError();
     }
 
     @Invoker("register")
-    public static <P extends TreeDecorator> TreeDecoratorType<P> invokeTwoRegister(String id, Codec<MushroomTreeDecorator> codec) {
+    public static <P extends TreeDecorator> TreeDecoratorType<P> invokeMushroomRegister(String id, Codec<MushroomTreeDecorator> codec) {
         throw new AssertionError();
     }
 
