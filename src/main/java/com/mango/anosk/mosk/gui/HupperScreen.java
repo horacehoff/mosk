@@ -14,7 +14,7 @@ import net.minecraft.util.Identifier;
 
 @Environment(EnvType.CLIENT)
 public class HupperScreen extends HandledScreen<HupperScreenHandler> {
-    private static final Identifier TEXTURE = new Identifier("textures/gui/container/hopper.png");
+    private static final Identifier TEXTURE = new Identifier("textures/gui/container/hupper.png");
 
     public HupperScreen(HupperScreenHandler handler, PlayerInventory inventory, Text title) {
         super(handler, inventory, title);
