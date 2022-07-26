@@ -64,6 +64,6 @@ public class BranchTreeDecorator extends BeehiveTreeDecorator {
         if (optional.isEmpty()) {
             return;
         }
-        generator.replace(optional.get().add(0, -1*ThreadLocalRandom.current().nextInt(2, 4 + 1), 0), (BlockState)Blocks.BIRCH_LOG.getStateManager().getStates().stream().findFirst().get());
+        generator.replace(optional.get().add(0, -1*ThreadLocalRandom.current().nextInt(2, 3 + 1), 0), (BlockState)Blocks.BIRCH_LOG.getStateManager().getStates().stream().findFirst().get());
     }
 }

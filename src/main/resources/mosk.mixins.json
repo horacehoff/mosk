@@ -4,7 +4,8 @@
   "package": "com.mango.anosk.mosk.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
-    "TreeDecoratorTypeMixin"
+    "TreeDecoratorTypeMixin",
+    "OverworldBiomeCreatorMixin"
   ],
   "client": [],
   "server": [],

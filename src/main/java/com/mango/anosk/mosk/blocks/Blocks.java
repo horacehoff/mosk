@@ -26,10 +26,22 @@ public abstract class Blocks {
             .of(Material.WOOD)
             .strength(2.0f));
 
+    public static final RopeBlock ROPE_BLOCK = new RopeBlock(FabricBlockSettings
+            .of(Material.BAMBOO)
+            .strength(1.0f)
+    );
+
+    public static final TntTestBlock TNT_TEST = new TntTestBlock(FabricBlockSettings
+            .of(Material.BAMBOO)
+            .strength(1.0f)
+    );
+
     public static void initBlocks() {
         Registry.register(Registry.BLOCK, new Identifier("mosk", "hupper_block"), HUPPER_BLOCK);
         Registry.register(Registry.BLOCK, new Identifier("mosk", "birch_mushroom"), BIRCH_MUSHROOM);
         Registry.register(Registry.BLOCK, new Identifier("mosk", "mushroom_parasite_block"), MUSHROOM_PARASITE_BLOCK);
         Registry.register(Registry.BLOCK, new Identifier("mosk", "pulley_block"), PULLEY_BLOCK);
+        Registry.register(Registry.BLOCK, new Identifier("mosk", "rope_block"), ROPE_BLOCK);
+        Registry.register(Registry.BLOCK, new Identifier("mosk", "tnt_test_block"), TNT_TEST);
     }
 }
