@@ -24,7 +24,7 @@ public abstract class Blocks {
 
     public static final PulleyBlock PULLEY_BLOCK = new PulleyBlock(FabricBlockSettings
             .of(Material.WOOD)
-            .strength(2.0f));
+            .strength(2.0f).nonOpaque());
 
     public static final RopeBlock ROPE_BLOCK = new RopeBlock(FabricBlockSettings
             .of(Material.BAMBOO)
