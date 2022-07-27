@@ -11,8 +11,8 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.explosion.Explosion;
 
-public class TntTestBlock extends Block {
-    public TntTestBlock(Settings settings) {
+public class C4Block extends Block {
+    public C4Block(Settings settings) {
         super(settings);
     }
 
