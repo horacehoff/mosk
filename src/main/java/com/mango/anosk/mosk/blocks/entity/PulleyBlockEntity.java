@@ -17,7 +17,6 @@ public class PulleyBlockEntity extends BlockEntity implements IAnimatable {
     private AnimationFactory factory = new AnimationFactory(this);
 
     public PulleyBlockEntity(BlockPos pos, BlockState state) {
-
         super(BlockEntities.PULLEY_BLOCK_ENTITY, pos, state);
     }
 
@@ -27,7 +26,7 @@ public class PulleyBlockEntity extends BlockEntity implements IAnimatable {
     }
 
     private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event){
-        event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.pulley.up", true));
+        event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.pulley.down", true));
         return PlayState.CONTINUE;
     }
 

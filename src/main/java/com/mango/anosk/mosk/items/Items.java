@@ -12,10 +12,10 @@ public class Items {
     public static final RopeItem ROPE_ITEM = new RopeItem(new FabricItemSettings().group(ItemGroup.MISC).maxCount(16));
     public static final BlockItem PULLEY_ITEM = Registry.register(Registry.ITEM, new Identifier("mosk", "pulley_block"), new BlockItem(Blocks.PULLEY_BLOCK, new Item.Settings().group(ItemGroup.REDSTONE)));
 
+
     public static void initItems() {
         Registry.register(Registry.ITEM, new Identifier("mosk", "rope_item"), ROPE_ITEM);
         Registry.register(Registry.ITEM, new Identifier("mosk", "hupper_block"), new BlockItem(Blocks.HUPPER_BLOCK, new Item.Settings().group(ItemGroup.REDSTONE)));
         Registry.register(Registry.ITEM, new Identifier("mosk", "mushroom_parasite_block"), new BlockItem(Blocks.MUSHROOM_PARASITE_BLOCK, new Item.Settings().group(ItemGroup.DECORATIONS)));
-        //Registry.register(Registry.ITEM, new Identifier("mosk", "pulley_block"), PULLEY_ITEM);
     }
 }

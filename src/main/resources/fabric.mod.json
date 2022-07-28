@@ -23,7 +23,7 @@
       "com.mango.anosk.mosk.Mosk"
     ],
     "client": [
-      "net.mango.anosk.mosk.MoskClient"
+      "com.mango.anosk.mosk.MoskClient"
     ]
   },
   "depends": {
