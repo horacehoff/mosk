@@ -21,6 +21,9 @@
   "entrypoints": {
     "main": [
       "com.mango.anosk.mosk.Mosk"
+    ],
+    "client": [
+      "net.mango.anosk.mosk.MoskClient"
     ]
   },
   "depends": {

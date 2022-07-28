@@ -32,9 +32,6 @@ public class Mosk implements ModInitializer {
 		ModWorldGen.generateWorldGen();
 		ModBiomes.initBiomes();
 		CryingObsidianPortal.registerPortal();
-
-		GeoItemRenderer.registerItemRenderer(Items.PULLEY_ITEM, new PulleyBlockItemRenderer());
-		BlockEntityRendererRegistry.register(BlockEntities.PULLEY_BLOCK_ENTITY, PulleyBlockRenderer::new);
 	}
 
 }
