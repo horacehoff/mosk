@@ -34,5 +34,12 @@
   },
   "mixins": [
     "mosk.mixins.json"
-  ]
+  ],
+  "custom": {
+    "modmenu": {
+      "links": {
+        "mosk.discord": "https://discord.gg/jEGF5fb"
+      }
+    }
+  }
 }

@@ -1,5 +1,6 @@
 package com.mango.anosk.mosk.blocks;
 
+import com.mango.anosk.mosk.Mosk;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.Block;
 import net.minecraft.block.Material;
@@ -31,11 +32,17 @@ public abstract class Blocks {
             .strength(1.0f)
     );
 
+    public static final WickBlock WICK_BLOCK = new WickBlock(FabricBlockSettings
+            .of(Material.METAL)
+            .strength(0.5f)
+    );
+
     public static void initBlocks() {
-        Registry.register(Registry.BLOCK, new Identifier("mosk", "hupper_block"), HUPPER_BLOCK);
-        Registry.register(Registry.BLOCK, new Identifier("mosk", "birch_mushroom"), BIRCH_MUSHROOM);
-        Registry.register(Registry.BLOCK, new Identifier("mosk", "mushroom_parasite_block"), MUSHROOM_PARASITE_BLOCK);
-        Registry.register(Registry.BLOCK, new Identifier("mosk", "pulley_block"), PULLEY_BLOCK);
-        Registry.register(Registry.BLOCK, new Identifier("mosk", "rope_block"), ROPE_BLOCK);
+        Registry.register(Registry.BLOCK, new Identifier(Mosk.MOD_ID, "hupper_block"), HUPPER_BLOCK);
+        Registry.register(Registry.BLOCK, new Identifier(Mosk.MOD_ID, "birch_mushroom"), BIRCH_MUSHROOM);
+        Registry.register(Registry.BLOCK, new Identifier(Mosk.MOD_ID, "mushroom_parasite_block"), MUSHROOM_PARASITE_BLOCK);
+        Registry.register(Registry.BLOCK, new Identifier(Mosk.MOD_ID, "pulley_block"), PULLEY_BLOCK);
+        Registry.register(Registry.BLOCK, new Identifier(Mosk.MOD_ID, "rope_block"), ROPE_BLOCK);
+        Registry.register(Registry.BLOCK, new Identifier(Mosk.MOD_ID, "wick_block"), WICK_BLOCK);
     }
 }

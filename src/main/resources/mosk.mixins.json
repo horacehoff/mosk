@@ -10,7 +10,9 @@
     "PortalPlacerMixin",
     "TreeDecoratorTypeMixin"
   ],
-  "client": [],
+  "client": [
+    "LevelPropertiesMixin"
+  ],
   "server": [],
   "injectors": {
     "defaultRequire": 1

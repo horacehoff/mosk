@@ -1,0 +1,15 @@
+{
+  "structures": [
+    {
+      "structure": "mosk:netherite_beacon",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "spacing": 2,
+    "separation": 0,
+    "salt": 1646207470,
+    "max_water_depth": 0
+  }
+}
