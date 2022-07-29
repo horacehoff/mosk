@@ -6,7 +6,7 @@
 A Minecraft mod project which aims at improving the game in a vanilla-like way.
 
 ## 🤔 What's this mod about ?
-Mosk rose from a dream of a 'better minecraft mod'. Much like this dream, Mosk tries to improve the game in all its aspects, while keeping a certain balance in the game and while keeping the community happy, and thus most of Mosk's features come from [Minecraft Feedback](https://feedback.minecraft.net/hc/en-us) or [Minecraft's Suggestion Box](https://www.reddit.com/r/minecraftsuggestions/).
+Mosk rose from a dream of a 'better minecraft mod'. Much like this dream, Mosk tries to improve the game in all its aspects, while keeping a certain balance in the game and keeping the community happy, and thus most of Mosk's features come from [Minecraft Feedback](https://feedback.minecraft.net/hc/en-us) or [Minecraft's Suggestion Box](https://www.reddit.com/r/minecraftsuggestions/).
 
 ## 🪶 Mosk's features
 - One-way Crying Obidian nether portals (https://www.reddit.com/r/minecraftsuggestions/comments/w8dasg/crying_obsidian_portals_oneway_portals/)
