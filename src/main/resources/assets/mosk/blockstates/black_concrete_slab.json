@@ -1,0 +1,15 @@
+
+    {
+  "variants": {
+    "type=bottom": {
+      "model": "mosk:block/black_concrete_slab"
+    },
+    "type=double": {
+      "model": "minecraft:block/black_concrete"
+    },
+    "type=top": {
+      "model": "mosk:block/black_concrete_slab_top"
+    }
+  }
+}
+    
