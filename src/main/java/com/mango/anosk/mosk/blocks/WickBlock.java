@@ -1,19 +1,23 @@
 package com.mango.anosk.mosk.blocks;
 
-import com.mango.anosk.mosk.Mosk;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.block.TntBlock;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Items;
+import net.minecraft.particle.ParticleTypes;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.IntProperty;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
 
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 public class WickBlock extends Block {
@@ -26,12 +30,20 @@ public class WickBlock extends Block {
         setDefaultState(this.stateManager.getDefaultState().with(status, 1));
     }
 
+
+    public static void spawnSmokeParticle(World world, BlockPos pos, boolean isSignal, boolean lotsOfSmoke) {
+        Random random = world.getRandom();
+        if (lotsOfSmoke) {
+            world.addParticle(ParticleTypes.SMOKE, (double)pos.getX() + 0.5 + random.nextDouble() / 4.0 * (double)(random.nextBoolean() ? 1 : -1), (double)pos.getY() + 0.4, (double)pos.getZ() + 0.5 + random.nextDouble() / 4.0 * (double)(random.nextBoolean() ? 1 : -1), 0.0, 0.005, 0.0);
+        }
+    }
+
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         if (player.getStackInHand(hand).getItem() == Items.FLINT_AND_STEEL) {
-            Mosk.log(String.valueOf(world.getBlockState(pos)));
-            world.setBlockState(pos, this.stateManager.getStates().get(1));
-            Mosk.log(String.valueOf(world.getBlockState(pos)));
+                world.setBlockState(pos, this.stateManager.getStates().get(1));
+                spawnSmokeParticle(world, pos, false, true);
+
         }
         return ActionResult.SUCCESS;
     }
@@ -39,22 +51,24 @@ public class WickBlock extends Block {
     @Override
     public void neighborUpdate(BlockState state, World world, BlockPos pos, Block sourceBlock, BlockPos sourcePos, boolean notify) {
         if (sourceBlock instanceof WickBlock && world.getBlockState(sourcePos) == this.stateManager.getStates().get(1)) {
-            try {
-                TimeUnit.SECONDS.sleep(1);
-                Mosk.log("Nearby WickBlock update, updating..");
+            ScheduledExecutorService scheduledExecutorService = Executors.newSingleThreadScheduledExecutor();
+            scheduledExecutorService.schedule(() -> {
                 world.setBlockState(pos, this.stateManager.getStates().get(1));
+                // world.getServer().getCommandManager().execute(world.getServer().getCommandSource(), "fill "+sourcePos.getX()+" "+sourcePos.getY()+" "+sourcePos.getZ()+" "+sourcePos.getX()+" "+sourcePos.getY()+" "+sourcePos.getZ()+" minecraft:air");
                 if (world.getBlockState(pos.add(1,0, 0)).getBlock() instanceof TntBlock) {
                     ((TntBlock) world.getBlockState(pos.add(1, 0, 0)).getBlock()).primeTnt(world, pos.add(1,0, 0));
+                    world.setBlockState(pos.add(1, 0, 0), Blocks.AIR.getDefaultState());
                 } else if (world.getBlockState(pos.add(-1,0, 0)).getBlock() instanceof TntBlock) {
                     ((TntBlock) world.getBlockState(pos.add(-1, 0, 0)).getBlock()).primeTnt(world, pos.add(-1,0, 0));
+                    world.setBlockState(pos.add(-1, 0, 0), Blocks.AIR.getDefaultState());
                 } else if (world.getBlockState(pos.add(0,0, -1)).getBlock() instanceof TntBlock) {
                     ((TntBlock) world.getBlockState(pos.add(0, 0, -1)).getBlock()).primeTnt(world, pos.add(0, 0, -1));
+                    world.setBlockState(pos.add(0, 0, -1), Blocks.AIR.getDefaultState());
                 } else if (world.getBlockState(pos.add(0,0, 1)).getBlock() instanceof TntBlock) {
                     ((TntBlock) world.getBlockState(pos.add(0, 0, 1)).getBlock()).primeTnt(world, pos.add(0,0, 1));
+                    world.setBlockState(pos.add(0, 0, 1), Blocks.AIR.getDefaultState());
                 }
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
+        }, 1, TimeUnit.SECONDS);
         }
     }
 

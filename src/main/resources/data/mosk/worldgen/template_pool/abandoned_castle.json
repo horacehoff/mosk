@@ -1,12 +1,12 @@
 {
-  "name": "mosk:netherite_beacon",
+  "name": "mosk:abandoned_castle",
   "fallback": "minecraft:empty",
   "elements": [
     {
       "weight": 1,
       "element": {
         "element_type": "minecraft:single_pool_element",
-        "location": "mosk:netherite_beacon",
+        "location": "mosk:abandoned_castle",
         "projection": "terrain_matching",
         "processors": "minecraft:empty"
       }
