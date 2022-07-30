@@ -12,7 +12,7 @@ Mosk rose from a dream of a 'better minecraft mod'. Much like this dream, Mosk t
 - One-way Crying Obidian nether portals (https://www.reddit.com/r/minecraftsuggestions/comments/w8dasg/crying_obsidian_portals_oneway_portals/)
 - Placeable Gunpowder, called wick_block (https://feedback.minecraft.net/hc/en-us/community/posts/360011129972-Placeable-Gunpowder)
 - Pulley block
-- Revamped birch forest, following the abandoned Minecraft Live 2021 concept art (https://www.reddit.com/r/Minecraft/comments/q9gag2/birch_forest_concept_art/)
+- Revamped birch forest, following the abandoned Minecraft Live 2021 concept art (https://i.redd.it/0w3fxkcmiut71.png)
   - Tall birch trees that may have Bees Nests, branches (like in the concept art), or Mushroom Parasites
   - Mushroom Parasite, a new kind of mushroom that grows on tall birch trees
 - An upwards-version of the Hopper, the Hupper, that makes item go up if it has redstone power (https://feedback.minecraft.net/hc/en-us/community/posts/360011186551-Inverted-Hoppers)
