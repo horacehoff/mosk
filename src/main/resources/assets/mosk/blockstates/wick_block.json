@@ -1,13 +1,13 @@
 {
   "variants": {
-    "idle": {
-      "model": "mosk:block/wick_block_idle"
+    "status=1": {
+      "model": "mosk:textures/block/wick_block_idle"
     },
-    "lit": {
-      "model": "mosk:block/wick_block_lit"
+    "status=2": {
+      "model": "mosk:textures/block/wick_block_lit"
     },
-    "used": {
-      "model": "mosk:block/wick_block_used"
+    "status=3": {
+      "model": "mosk:textures/block/wick_block_used"
     }
   }
 }
