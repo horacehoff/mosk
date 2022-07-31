@@ -16,5 +16,6 @@ Mosk rose from a dream of a 'better minecraft mod'. Much like this dream, Mosk t
   - Tall birch trees that may have Bees Nests, branches (like in the concept art), or Mushroom Parasites
   - Mushroom Parasite, a new kind of mushroom that grows on tall birch trees
 - An upwards-version of the Hopper, the Hupper, that makes item go up if it has redstone power (https://feedback.minecraft.net/hc/en-us/community/posts/360011186551-Inverted-Hoppers)
+- Cracked Stone Bricks Slabs/Stairs
 - Concrete and Terracotta Slabs/Stairs (https://feedback.minecraft.net/hc/en-us/community/posts/360010984931-Concrete-and-Terracotta-having-Slabs-Stairs-and-Walls)
-
+- Allow signs to be rewrote using a Stone Axe (https://feedback.minecraft.net/hc/en-us/community/posts/360011085651-Rewritable-signs-was-Text-on-signs-)
