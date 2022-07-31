@@ -3,14 +3,19 @@ package com.mango.anosk.mosk.blocks;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.*;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.Items;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.state.StateManager;
+import net.minecraft.state.property.DirectionProperty;
 import net.minecraft.state.property.IntProperty;
 import net.minecraft.util.ActionResult;
+import net.minecraft.util.BlockMirror;
+import net.minecraft.util.BlockRotation;
 import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
@@ -20,14 +25,20 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
-public class WickBlock extends Block {
+public class WickBlock extends HorizontalFacingBlock {
 
 
     private static IntProperty status = IntProperty.of("status", 1, 3);
+    public static final DirectionProperty FACING = HorizontalFacingBlock.FACING;
 
     public WickBlock(Settings settings) {
         super(settings);
-        setDefaultState(this.stateManager.getDefaultState().with(status, 1));
+        this.setDefaultState((BlockState)((BlockState)((BlockState)this.stateManager.getDefaultState()).with(FACING, Direction.NORTH).with(FACING, Direction.NORTH).with(status, 1)));
+    }
+
+    @Override
+    public BlockState getPlacementState(ItemPlacementContext ctx) {
+        return (BlockState)this.getDefaultState().with(FACING, ctx.getPlayerFacing().getOpposite());
     }
 
 
@@ -35,6 +46,7 @@ public class WickBlock extends Block {
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
         return createCuboidShape(0, 0, 0, 16f, 1f, 16);
     }
+
 
     public static void spawnSmokeParticle(World world, BlockPos pos, boolean isSignal, boolean lotsOfSmoke) {
         Random random = world.getRandom();
@@ -46,7 +58,15 @@ public class WickBlock extends Block {
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         if (player.getStackInHand(hand).getItem() == Items.FLINT_AND_STEEL) {
-                world.setBlockState(pos, this.stateManager.getStates().get(1));
+                if (world.getBlockState(pos).toString().contains("north")) {
+                    world.setBlockState(pos, this.stateManager.getStates().get(1));
+                } else if (world.getBlockState(pos).toString().contains("south")) {
+                    world.setBlockState(pos, this.stateManager.getStates().get(4));
+                } else if (world.getBlockState(pos).toString().contains("west")) {
+                    world.setBlockState(pos, this.stateManager.getStates().get(7));
+                } else if (world.getBlockState(pos).toString().contains("east")) {
+                    world.setBlockState(pos, this.stateManager.getStates().get(10));
+                }
                 spawnSmokeParticle(world, pos, false, true);
 
         }
@@ -55,10 +75,18 @@ public class WickBlock extends Block {
 
     @Override
     public void neighborUpdate(BlockState state, World world, BlockPos pos, Block sourceBlock, BlockPos sourcePos, boolean notify) {
-        if (sourceBlock instanceof WickBlock && world.getBlockState(sourcePos) == this.stateManager.getStates().get(1)) {
+        if (sourceBlock instanceof WickBlock && world.getBlockState(sourcePos).toString().contains("2")) {
             ScheduledExecutorService scheduledExecutorService = Executors.newSingleThreadScheduledExecutor();
             scheduledExecutorService.schedule(() -> {
-                world.setBlockState(pos, this.stateManager.getStates().get(1));
+                if (world.getBlockState(pos).toString().contains("north")) {
+                    world.setBlockState(pos, this.stateManager.getStates().get(1));
+                } else if (world.getBlockState(pos).toString().contains("south")) {
+                    world.setBlockState(pos, this.stateManager.getStates().get(4));
+                } else if (world.getBlockState(pos).toString().contains("west")) {
+                    world.setBlockState(pos, this.stateManager.getStates().get(7));
+                } else if (world.getBlockState(pos).toString().contains("east")) {
+                    world.setBlockState(pos, this.stateManager.getStates().get(10));
+                }
                 // world.getServer().getCommandManager().execute(world.getServer().getCommandSource(), "fill "+sourcePos.getX()+" "+sourcePos.getY()+" "+sourcePos.getZ()+" "+sourcePos.getX()+" "+sourcePos.getY()+" "+sourcePos.getZ()+" minecraft:air");
                 if (world.getBlockState(pos.add(1,0, 0)).getBlock() instanceof TntBlock) {
                     ((TntBlock) world.getBlockState(pos.add(1, 0, 0)).getBlock()).primeTnt(world, pos.add(1,0, 0));
@@ -79,6 +107,16 @@ public class WickBlock extends Block {
 
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> stateManager) {
-        stateManager.add(status);
+        stateManager.add(FACING,status);
+    }
+
+    @Override
+    public BlockState rotate(BlockState state, BlockRotation rotation) {
+        return (BlockState)state.with(FACING, rotation.rotate(state.get(FACING)));
+    }
+
+    @Override
+    public BlockState mirror(BlockState state, BlockMirror mirror) {
+        return state.rotate(mirror.getRotation(state.get(FACING)));
     }
 }

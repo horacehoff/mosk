@@ -1,52 +1,49 @@
 {
   "variants": {
-    "facing=east": {
+    "facing=east,status=1": {
       "y": 90,
-      "status=1": {
-        "model": "mosk:block/wick_block_idle"
-      },
-      "status=2": {
-        "model": "mosk:block/wick_block_lit"
-      },
-      "status=3": {
-        "model": "mosk:block/wick_block_used"
-      }
+      "model": "mosk:block/wick_block_idle"
     },
-    "facing=south": {
-      "y": 0,
-      "status=1": {
-        "model": "mosk:block/wick_block_idle"
-      },
-      "status=2": {
-        "model": "mosk:block/wick_block_lit"
-      },
-      "status=3": {
-        "model": "mosk:block/wick_block_used"
-      }
-    },
-    "facing=north": {
-      "y": 0,
-      "status=1": {
-        "model": "mosk:block/wick_block_idle"
-      },
-      "status=2": {
-        "model": "mosk:block/wick_block_lit"
-      },
-      "status=3": {
-        "model": "mosk:block/wick_block_used"
-      }
-    },
-    "facing=west": {
+    "facing=east,status=2": {
       "y": 90,
-      "status=1": {
-        "model": "mosk:block/wick_block_idle"
-      },
-      "status=2": {
-        "model": "mosk:block/wick_block_lit"
-      },
-      "status=3": {
-        "model": "mosk:block/wick_block_used"
-      }
+      "model": "mosk:block/wick_block_lit"
+    },
+    "facing=east,status=3": {
+      "y": 90,
+      "model": "mosk:block/wick_block_used"
+    },
+    "facing=north,status=1": {
+      "model": "mosk:block/wick_block_idle"
+    },
+    "facing=north,status=2": {
+      "model": "mosk:block/wick_block_lit"
+    },
+    "facing=north,status=3": {
+      "model": "mosk:block/wick_block_used"
+    },
+    "facing=south,status=1": {
+      "y": 180,
+      "model": "mosk:block/wick_block_idle"
+    },
+    "facing=south,status=2": {
+      "y": 180,
+      "model": "mosk:block/wick_block_lit"
+    },
+    "facing=south,status=3": {
+      "y": 180,
+      "model": "mosk:block/wick_block_used"
+    },
+    "facing=west,status=1": {
+      "y": 270,
+      "model": "mosk:block/wick_block_idle"
+    },
+    "facing=west,status=2": {
+      "y": 270,
+      "model": "mosk:block/wick_block_lit"
+    },
+    "facing=west,status=3": {
+      "y": 270,
+      "model": "mosk:block/wick_block_used"
     }
   }
 }

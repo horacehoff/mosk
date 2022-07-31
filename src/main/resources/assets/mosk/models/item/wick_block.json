@@ -1,3 +1,6 @@
 {
-  "parent": "mosk:block/wick_block_idle"
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "mosk:item/wick_block"
+  }
 }

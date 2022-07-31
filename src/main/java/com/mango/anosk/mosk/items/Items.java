@@ -15,7 +15,7 @@ public class Items {
     public static final Item STONE_BRICK_SLAB = new BlockItem(Blocks.CRACKED_STONE_BRICK_SLAB, new Item.Settings().group(ItemGroup.BUILDING_BLOCKS));
     public static final BlockItem HUPPER_ITEM = new BlockItem(Blocks.HUPPER_BLOCK, new Item.Settings().group(ItemGroup.REDSTONE));
     public static final BlockItem MUSHROOM_PARASITE_ITEM = new BlockItem(Blocks.MUSHROOM_PARASITE_BLOCK, new Item.Settings().group(ItemGroup.DECORATIONS));
-    public static final BlockItem WICK_BLOCK = new BlockItem(Blocks.WICK_BLOCK, new Item.Settings().group(ItemGroup.REDSTONE));
+    public static final BlockItem WICK_BLOCK = new BlockItem(Blocks.WICK_BLOCK, new Item.Settings().group(ItemGroup.MISC));
 
    
     public static void initItems() {
