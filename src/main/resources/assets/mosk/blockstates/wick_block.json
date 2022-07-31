@@ -1,13 +1,52 @@
 {
   "variants": {
-    "status=1": {
-      "model": "mosk:block/wick_block_idle"
+    "facing=east": {
+      "y": 90,
+      "status=1": {
+        "model": "mosk:block/wick_block_idle"
+      },
+      "status=2": {
+        "model": "mosk:block/wick_block_lit"
+      },
+      "status=3": {
+        "model": "mosk:block/wick_block_used"
+      }
     },
-    "status=2": {
-      "model": "mosk:block/wick_block_lit"
+    "facing=south": {
+      "y": 0,
+      "status=1": {
+        "model": "mosk:block/wick_block_idle"
+      },
+      "status=2": {
+        "model": "mosk:block/wick_block_lit"
+      },
+      "status=3": {
+        "model": "mosk:block/wick_block_used"
+      }
     },
-    "status=3": {
-      "model": "mosk:block/wick_block_used"
+    "facing=north": {
+      "y": 0,
+      "status=1": {
+        "model": "mosk:block/wick_block_idle"
+      },
+      "status=2": {
+        "model": "mosk:block/wick_block_lit"
+      },
+      "status=3": {
+        "model": "mosk:block/wick_block_used"
+      }
+    },
+    "facing=west": {
+      "y": 90,
+      "status=1": {
+        "model": "mosk:block/wick_block_idle"
+      },
+      "status=2": {
+        "model": "mosk:block/wick_block_lit"
+      },
+      "status=3": {
+        "model": "mosk:block/wick_block_used"
+      }
     }
   }
 }
