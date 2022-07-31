@@ -34,6 +34,8 @@ public abstract class Blocks {
     public static final WickBlock WICK_BLOCK = new WickBlock(FabricBlockSettings
             .of(Material.METAL)
             .strength(0.5f)
+            .nonOpaque()
+            .noCollision()
     );
 
     public static final Block CRACKED_STONE_BRICK_SLAB = new SlabBlock(AbstractBlock.Settings.of(Material.STONE, MapColor.STONE_GRAY).requiresTool().strength(2.0f, 6.0f));
@@ -62,6 +64,7 @@ public abstract class Blocks {
     public static final Block BLACK_CONCRETE_SLAB_BLOCK = Registry.register(Registry.BLOCK, new Identifier(Mosk.MOD_ID, "black_concrete_slab"), new SlabBlock(AbstractBlock.Settings.of(Material.STONE, DyeColor.BLACK).requiresTool().strength(1.8f)));
 
 
+    public static final Block WHITE_CONCRETE_STAIRS_BLOCK = Registry.register(Registry.BLOCK, new Identifier(Mosk.MOD_ID, "white_concrete_stairs"), new StairsBlock(net.minecraft.block.Blocks.WHITE_CONCRETE.getDefaultState(), AbstractBlock.Settings.copy(net.minecraft.block.Blocks.WHITE_CONCRETE)));
 
     public static final Block ORANGE_CONCRETE_STAIRS_BLOCK = Registry.register(Registry.BLOCK, new Identifier(Mosk.MOD_ID, "orange_concrete_stairs"), new StairsBlock(net.minecraft.block.Blocks.ORANGE_CONCRETE.getDefaultState(), AbstractBlock.Settings.copy(net.minecraft.block.Blocks.ORANGE_CONCRETE)));
     public static final Block MAGENTA_CONCRETE_STAIRS_BLOCK = Registry.register(Registry.BLOCK, new Identifier(Mosk.MOD_ID, "magenta_concrete_stairs"), new StairsBlock(net.minecraft.block.Blocks.MAGENTA_CONCRETE.getDefaultState(), AbstractBlock.Settings.copy(net.minecraft.block.Blocks.MAGENTA_CONCRETE)));
@@ -78,6 +81,44 @@ public abstract class Blocks {
     public static final Block GREEN_CONCRETE_STAIRS_BLOCK = Registry.register(Registry.BLOCK, new Identifier(Mosk.MOD_ID, "green_concrete_stairs"), new StairsBlock(net.minecraft.block.Blocks.GREEN_CONCRETE.getDefaultState(), AbstractBlock.Settings.copy(net.minecraft.block.Blocks.GREEN_CONCRETE)));
     public static final Block RED_CONCRETE_STAIRS_BLOCK = Registry.register(Registry.BLOCK, new Identifier(Mosk.MOD_ID, "red_concrete_stairs"), new StairsBlock(net.minecraft.block.Blocks.RED_CONCRETE.getDefaultState(), AbstractBlock.Settings.copy(net.minecraft.block.Blocks.RED_CONCRETE)));
     public static final Block BLACK_CONCRETE_STAIRS_BLOCK = Registry.register(Registry.BLOCK, new Identifier(Mosk.MOD_ID, "black_concrete_stairs"), new StairsBlock(net.minecraft.block.Blocks.BLACK_CONCRETE.getDefaultState(), AbstractBlock.Settings.copy(net.minecraft.block.Blocks.BLACK_CONCRETE)));
+
+
+
+    public static final Block WHITE_TERRACOTTA_SLAB_BLOCK = Registry.register(Registry.BLOCK, new Identifier(Mosk.MOD_ID, "white_terracotta_slab"), new SlabBlock(AbstractBlock.Settings.of(Material.STONE, DyeColor.WHITE).requiresTool().strength(1.8f)));
+    public static final Block ORANGE_TERRACOTTA_SLAB_BLOCK = Registry.register(Registry.BLOCK, new Identifier(Mosk.MOD_ID, "orange_terracotta_slab"), new SlabBlock(AbstractBlock.Settings.of(Material.STONE, DyeColor.ORANGE).requiresTool().strength(1.8f)));
+    public static final Block MAGENTA_TERRACOTTA_SLAB_BLOCK = Registry.register(Registry.BLOCK, new Identifier(Mosk.MOD_ID, "magenta_terracotta_slab"), new SlabBlock(AbstractBlock.Settings.of(Material.STONE, DyeColor.MAGENTA).requiresTool().strength(1.8f)));
+    public static final Block LIGHT_BLUE_TERRACOTTA_SLAB_BLOCK = Registry.register(Registry.BLOCK, new Identifier(Mosk.MOD_ID, "light_blue_terracotta_slab"), new SlabBlock(AbstractBlock.Settings.of(Material.STONE, DyeColor.LIGHT_BLUE).requiresTool().strength(1.8f)));
+    public static final Block YELLOW_TERRACOTTA_SLAB_BLOCK = Registry.register(Registry.BLOCK, new Identifier(Mosk.MOD_ID, "yellow_terracotta_slab"), new SlabBlock(AbstractBlock.Settings.of(Material.STONE, DyeColor.YELLOW).requiresTool().strength(1.8f)));
+    public static final Block LIME_TERRACOTTA_SLAB_BLOCK = Registry.register(Registry.BLOCK, new Identifier(Mosk.MOD_ID, "lime_terracotta_slab"), new SlabBlock(AbstractBlock.Settings.of(Material.STONE, DyeColor.LIME).requiresTool().strength(1.8f)));
+    public static final Block PINK_TERRACOTTA_SLAB_BLOCK = Registry.register(Registry.BLOCK, new Identifier(Mosk.MOD_ID, "pink_terracotta_slab"), new SlabBlock(AbstractBlock.Settings.of(Material.STONE, DyeColor.PINK).requiresTool().strength(1.8f)));
+    public static final Block GRAY_TERRACOTTA_SLAB_BLOCK = Registry.register(Registry.BLOCK, new Identifier(Mosk.MOD_ID, "gray_terracotta_slab"), new SlabBlock(AbstractBlock.Settings.of(Material.STONE, DyeColor.GRAY).requiresTool().strength(1.8f)));
+    public static final Block LIGHT_GRAY_TERRACOTTA_SLAB_BLOCK = Registry.register(Registry.BLOCK, new Identifier(Mosk.MOD_ID, "light_gray_terracotta_slab"), new SlabBlock(AbstractBlock.Settings.of(Material.STONE, DyeColor.LIGHT_GRAY).requiresTool().strength(1.8f)));
+    public static final Block CYAN_TERRACOTTA_SLAB_BLOCK = Registry.register(Registry.BLOCK, new Identifier(Mosk.MOD_ID, "cyan_terracotta_slab"), new SlabBlock(AbstractBlock.Settings.of(Material.STONE, DyeColor.CYAN).requiresTool().strength(1.8f)));
+    public static final Block PURPLE_TERRACOTTA_SLAB_BLOCK = Registry.register(Registry.BLOCK, new Identifier(Mosk.MOD_ID, "purple_terracotta_slab"), new SlabBlock(AbstractBlock.Settings.of(Material.STONE, DyeColor.PURPLE).requiresTool().strength(1.8f)));
+    public static final Block BLUE_TERRACOTTA_SLAB_BLOCK = Registry.register(Registry.BLOCK, new Identifier(Mosk.MOD_ID, "blue_terracotta_slab"), new SlabBlock(AbstractBlock.Settings.of(Material.STONE, DyeColor.BLUE).requiresTool().strength(1.8f)));
+    public static final Block BROWN_TERRACOTTA_SLAB_BLOCK = Registry.register(Registry.BLOCK, new Identifier(Mosk.MOD_ID, "brown_terracotta_slab"), new SlabBlock(AbstractBlock.Settings.of(Material.STONE, DyeColor.BROWN).requiresTool().strength(1.8f)));
+    public static final Block GREEN_TERRACOTTA_SLAB_BLOCK = Registry.register(Registry.BLOCK, new Identifier(Mosk.MOD_ID, "green_terracotta_slab"), new SlabBlock(AbstractBlock.Settings.of(Material.STONE, DyeColor.GREEN).requiresTool().strength(1.8f)));
+    public static final Block RED_TERRACOTTA_SLAB_BLOCK = Registry.register(Registry.BLOCK, new Identifier(Mosk.MOD_ID, "red_terracotta_slab"), new SlabBlock(AbstractBlock.Settings.of(Material.STONE, DyeColor.RED).requiresTool().strength(1.8f)));
+    public static final Block BLACK_TERRACOTTA_SLAB_BLOCK = Registry.register(Registry.BLOCK, new Identifier(Mosk.MOD_ID, "black_terracotta_slab"), new SlabBlock(AbstractBlock.Settings.of(Material.STONE, DyeColor.BLACK).requiresTool().strength(1.8f)));
+
+
+    public static final Block WHITE_TERRACOTTA_STAIRS_BLOCK = Registry.register(Registry.BLOCK, new Identifier(Mosk.MOD_ID, "white_terracotta_stairs"), new StairsBlock(net.minecraft.block.Blocks.WHITE_TERRACOTTA.getDefaultState(), AbstractBlock.Settings.copy(net.minecraft.block.Blocks.WHITE_TERRACOTTA)));
+
+    public static final Block ORANGE_TERRACOTTA_STAIRS_BLOCK = Registry.register(Registry.BLOCK, new Identifier(Mosk.MOD_ID, "orange_terracotta_stairs"), new StairsBlock(net.minecraft.block.Blocks.ORANGE_TERRACOTTA.getDefaultState(), AbstractBlock.Settings.copy(net.minecraft.block.Blocks.ORANGE_TERRACOTTA)));
+    public static final Block MAGENTA_TERRACOTTA_STAIRS_BLOCK = Registry.register(Registry.BLOCK, new Identifier(Mosk.MOD_ID, "magenta_terracotta_stairs"), new StairsBlock(net.minecraft.block.Blocks.MAGENTA_TERRACOTTA.getDefaultState(), AbstractBlock.Settings.copy(net.minecraft.block.Blocks.MAGENTA_TERRACOTTA)));
+    public static final Block LIGHT_BLUE_TERRACOTTA_STAIRS_BLOCK = Registry.register(Registry.BLOCK, new Identifier(Mosk.MOD_ID, "light_blue_terracotta_stairs"), new StairsBlock(net.minecraft.block.Blocks.LIGHT_BLUE_TERRACOTTA.getDefaultState(), AbstractBlock.Settings.copy(net.minecraft.block.Blocks.LIGHT_BLUE_TERRACOTTA)));
+    public static final Block YELLOW_TERRACOTTA_STAIRS_BLOCK = Registry.register(Registry.BLOCK, new Identifier(Mosk.MOD_ID, "yellow_terracotta_stairs"), new StairsBlock(net.minecraft.block.Blocks.YELLOW_TERRACOTTA.getDefaultState(), AbstractBlock.Settings.copy(net.minecraft.block.Blocks.YELLOW_TERRACOTTA)));
+    public static final Block LIME_TERRACOTTA_STAIRS_BLOCK = Registry.register(Registry.BLOCK, new Identifier(Mosk.MOD_ID, "lime_terracotta_stairs"), new StairsBlock(net.minecraft.block.Blocks.LIME_TERRACOTTA.getDefaultState(), AbstractBlock.Settings.copy(net.minecraft.block.Blocks.LIME_TERRACOTTA)));
+    public static final Block PINK_TERRACOTTA_STAIRS_BLOCK = Registry.register(Registry.BLOCK, new Identifier(Mosk.MOD_ID, "pink_terracotta_stairs"), new StairsBlock(net.minecraft.block.Blocks.PINK_TERRACOTTA.getDefaultState(), AbstractBlock.Settings.copy(net.minecraft.block.Blocks.PINK_TERRACOTTA)));
+    public static final Block GRAY_TERRACOTTA_STAIRS_BLOCK = Registry.register(Registry.BLOCK, new Identifier(Mosk.MOD_ID, "gray_terracotta_stairs"), new StairsBlock(net.minecraft.block.Blocks.GRAY_TERRACOTTA.getDefaultState(), AbstractBlock.Settings.copy(net.minecraft.block.Blocks.GRAY_TERRACOTTA)));
+    public static final Block LIGHT_GRAY_TERRACOTTA_STAIRS_BLOCK = Registry.register(Registry.BLOCK, new Identifier(Mosk.MOD_ID, "light_gray_terracotta_stairs"), new StairsBlock(net.minecraft.block.Blocks.LIGHT_GRAY_TERRACOTTA.getDefaultState(), AbstractBlock.Settings.copy(net.minecraft.block.Blocks.LIGHT_GRAY_TERRACOTTA)));
+    public static final Block CYAN_TERRACOTTA_STAIRS_BLOCK = Registry.register(Registry.BLOCK, new Identifier(Mosk.MOD_ID, "cyan_terracotta_stairs"), new StairsBlock(net.minecraft.block.Blocks.CYAN_TERRACOTTA.getDefaultState(), AbstractBlock.Settings.copy(net.minecraft.block.Blocks.CYAN_TERRACOTTA)));
+    public static final Block PURPLE_TERRACOTTA_STAIRS_BLOCK = Registry.register(Registry.BLOCK, new Identifier(Mosk.MOD_ID, "purple_terracotta_stairs"), new StairsBlock(net.minecraft.block.Blocks.PURPLE_TERRACOTTA.getDefaultState(), AbstractBlock.Settings.copy(net.minecraft.block.Blocks.PURPLE_TERRACOTTA)));
+    public static final Block BLUE_TERRACOTTA_STAIRS_BLOCK = Registry.register(Registry.BLOCK, new Identifier(Mosk.MOD_ID, "blue_terracotta_stairs"), new StairsBlock(net.minecraft.block.Blocks.BLUE_TERRACOTTA.getDefaultState(), AbstractBlock.Settings.copy(net.minecraft.block.Blocks.BLUE_TERRACOTTA)));
+    public static final Block BROWN_TERRACOTTA_STAIRS_BLOCK = Registry.register(Registry.BLOCK, new Identifier(Mosk.MOD_ID, "brown_terracotta_stairs"), new StairsBlock(net.minecraft.block.Blocks.BROWN_TERRACOTTA.getDefaultState(), AbstractBlock.Settings.copy(net.minecraft.block.Blocks.BROWN_TERRACOTTA)));
+    public static final Block GREEN_TERRACOTTA_STAIRS_BLOCK = Registry.register(Registry.BLOCK, new Identifier(Mosk.MOD_ID, "green_terracotta_stairs"), new StairsBlock(net.minecraft.block.Blocks.GREEN_TERRACOTTA.getDefaultState(), AbstractBlock.Settings.copy(net.minecraft.block.Blocks.GREEN_TERRACOTTA)));
+    public static final Block RED_TERRACOTTA_STAIRS_BLOCK = Registry.register(Registry.BLOCK, new Identifier(Mosk.MOD_ID, "red_terracotta_stairs"), new StairsBlock(net.minecraft.block.Blocks.RED_TERRACOTTA.getDefaultState(), AbstractBlock.Settings.copy(net.minecraft.block.Blocks.RED_TERRACOTTA)));
+    public static final Block BLACK_TERRACOTTA_STAIRS_BLOCK = Registry.register(Registry.BLOCK, new Identifier(Mosk.MOD_ID, "black_terracotta_stairs"), new StairsBlock(net.minecraft.block.Blocks.BLACK_TERRACOTTA.getDefaultState(), AbstractBlock.Settings.copy(net.minecraft.block.Blocks.BLACK_TERRACOTTA)));
 
 
 

@@ -1,9 +1,7 @@
 package com.mango.anosk.mosk.blocks;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
-import net.minecraft.block.TntBlock;
+import net.minecraft.block.*;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Items;
 import net.minecraft.particle.ParticleTypes;
@@ -14,6 +12,8 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.random.Random;
+import net.minecraft.util.shape.VoxelShape;
+import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 
 import java.util.concurrent.Executors;
@@ -30,6 +30,11 @@ public class WickBlock extends Block {
         setDefaultState(this.stateManager.getDefaultState().with(status, 1));
     }
 
+
+    @Override
+    public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
+        return createCuboidShape(0, 0, 0, 16f, 1f, 16);
+    }
 
     public static void spawnSmokeParticle(World world, BlockPos pos, boolean isSignal, boolean lotsOfSmoke) {
         Random random = world.getRandom();

@@ -1,0 +1,16 @@
+
+
+    {
+  "variants": {
+    "type=bottom": {
+      "model": "mosk:block/black_terracotta_slab"
+    },
+    "type=double": {
+      "model": "minecraft:block/black_terracotta"
+    },
+    "type=top": {
+      "model": "mosk:block/black_terracotta_slab_top"
+    }
+  }
+}
+    

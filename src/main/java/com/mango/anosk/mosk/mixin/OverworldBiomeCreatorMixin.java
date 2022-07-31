@@ -50,24 +50,13 @@ public class OverworldBiomeCreatorMixin {
         return new Biome.Builder().precipitation(precipitation).temperature(temperature).downfall(downfall).effects(new BiomeEffects.Builder().waterColor(waterColor).waterFogColor(waterFogColor).fogColor(12638463).skyColor(getNewSkyColor(temperature)).grassColor(9423669).moodSound(BiomeMoodSound.CAVE).music(music).build()).spawnSettings(spawnSettings.build()).generationSettings(generationSettings.build()).build();
     }
 
-    /**
-     * @author
-     * @reason
-     */
-    @Overwrite
-    private static void addBasicFeatures(GenerationSettings.Builder generationSettings) {
-        DefaultBiomeFeatures.addLandCarvers(generationSettings);
-        DefaultBiomeFeatures.addAmethystGeodes(generationSettings);
-        DefaultBiomeFeatures.addDungeons(generationSettings);
-        DefaultBiomeFeatures.addMineables(generationSettings);
-        DefaultBiomeFeatures.addSprings(generationSettings);
-        DefaultBiomeFeatures.addFrozenTopLayer(generationSettings);
-    }
+    @Shadow
+    private static void addBasicFeatures(GenerationSettings.Builder generationSettings) {}
 
 
     /**
-     * @author
-     * @reason
+     * @author Just_a_Mango
+     * @reason Modify the birch biome's grass color
      */
     @Overwrite
     public static Biome createNormalForest(boolean birch, boolean oldGrowth, boolean flower) {

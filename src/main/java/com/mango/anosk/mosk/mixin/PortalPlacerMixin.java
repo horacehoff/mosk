@@ -27,8 +27,8 @@ public class PortalPlacerMixin {
 
 
     /**
-     * @author
-     * @reason
+     * @author Just_a_Mango
+     * @reason Prevent the destination portal from being created and only teleport the player.
      */
     @Overwrite
     public static Optional<BlockLocating.Rectangle> createDestinationPortal(World world, BlockPos blockPos, BlockState frameBlock, Direction.Axis axis) {
