@@ -64,6 +64,8 @@ public abstract class Blocks {
     public static final Block BLACK_CONCRETE_SLAB_BLOCK = Registry.register(Registry.BLOCK, new Identifier(Mosk.MOD_ID, "black_concrete_slab"), new SlabBlock(AbstractBlock.Settings.of(Material.STONE, DyeColor.BLACK).requiresTool().strength(1.8f)));
 
 
+
+
     public static final Block WHITE_CONCRETE_STAIRS_BLOCK = Registry.register(Registry.BLOCK, new Identifier(Mosk.MOD_ID, "white_concrete_stairs"), new StairsBlock(net.minecraft.block.Blocks.WHITE_CONCRETE.getDefaultState(), AbstractBlock.Settings.copy(net.minecraft.block.Blocks.WHITE_CONCRETE)));
 
     public static final Block ORANGE_CONCRETE_STAIRS_BLOCK = Registry.register(Registry.BLOCK, new Identifier(Mosk.MOD_ID, "orange_concrete_stairs"), new StairsBlock(net.minecraft.block.Blocks.ORANGE_CONCRETE.getDefaultState(), AbstractBlock.Settings.copy(net.minecraft.block.Blocks.ORANGE_CONCRETE)));
@@ -81,6 +83,8 @@ public abstract class Blocks {
     public static final Block GREEN_CONCRETE_STAIRS_BLOCK = Registry.register(Registry.BLOCK, new Identifier(Mosk.MOD_ID, "green_concrete_stairs"), new StairsBlock(net.minecraft.block.Blocks.GREEN_CONCRETE.getDefaultState(), AbstractBlock.Settings.copy(net.minecraft.block.Blocks.GREEN_CONCRETE)));
     public static final Block RED_CONCRETE_STAIRS_BLOCK = Registry.register(Registry.BLOCK, new Identifier(Mosk.MOD_ID, "red_concrete_stairs"), new StairsBlock(net.minecraft.block.Blocks.RED_CONCRETE.getDefaultState(), AbstractBlock.Settings.copy(net.minecraft.block.Blocks.RED_CONCRETE)));
     public static final Block BLACK_CONCRETE_STAIRS_BLOCK = Registry.register(Registry.BLOCK, new Identifier(Mosk.MOD_ID, "black_concrete_stairs"), new StairsBlock(net.minecraft.block.Blocks.BLACK_CONCRETE.getDefaultState(), AbstractBlock.Settings.copy(net.minecraft.block.Blocks.BLACK_CONCRETE)));
+
+
 
 
 

@@ -1,0 +1,18 @@
+
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "#  ",
+        "## ",
+        "###"
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:red_terracotta"
+        }
+    },
+    "result": {
+        "item": "mosk:red_terracotta_stairs",
+        "count": 1
+    }
+}

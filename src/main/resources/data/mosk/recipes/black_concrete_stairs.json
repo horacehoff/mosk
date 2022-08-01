@@ -1,0 +1,18 @@
+
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "#  ",
+        "## ",
+        "###"
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:black_concrete"
+        }
+    },
+    "result": {
+        "item": "mosk:black_concrete_stairs",
+        "count": 1
+    }
+}

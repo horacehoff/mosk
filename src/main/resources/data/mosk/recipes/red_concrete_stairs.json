@@ -1,0 +1,18 @@
+
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "#  ",
+        "## ",
+        "###"
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:red_concrete"
+        }
+    },
+    "result": {
+        "item": "mosk:red_concrete_stairs",
+        "count": 1
+    }
+}

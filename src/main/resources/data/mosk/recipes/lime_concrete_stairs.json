@@ -1,0 +1,18 @@
+
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "#  ",
+        "## ",
+        "###"
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:lime_concrete"
+        }
+    },
+    "result": {
+        "item": "mosk:lime_concrete_stairs",
+        "count": 1
+    }
+}
