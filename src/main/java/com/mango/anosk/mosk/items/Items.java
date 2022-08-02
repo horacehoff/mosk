@@ -2,10 +2,14 @@ package com.mango.anosk.mosk.items;
 
 import com.mango.anosk.mosk.Mosk;
 import com.mango.anosk.mosk.blocks.Blocks;
+import com.mango.anosk.mosk.mixin.StatusEffectsMixin;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
+import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
+import net.minecraft.potion.Potion;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
@@ -16,6 +20,9 @@ public class Items {
     public static final BlockItem HUPPER_ITEM = new BlockItem(Blocks.HUPPER_BLOCK, new Item.Settings().group(ItemGroup.REDSTONE));
     public static final BlockItem MUSHROOM_PARASITE_ITEM = new BlockItem(Blocks.MUSHROOM_PARASITE_BLOCK, new Item.Settings().group(ItemGroup.DECORATIONS));
     public static final BlockItem WICK_BLOCK = new BlockItem(Blocks.WICK_BLOCK, new Item.Settings().group(ItemGroup.MISC));
+
+    public static final Potion LEVITATION = StatusEffectsMixin.invokeRegister("levitation", new Potion(new StatusEffectInstance(StatusEffects.LEVITATION, 1800)));
+    public static final Potion GLOWING = StatusEffectsMixin.invokeRegister("glowing", new Potion(new StatusEffectInstance(StatusEffects.GLOWING, 2100)));
 
    
     public static void initItems() {

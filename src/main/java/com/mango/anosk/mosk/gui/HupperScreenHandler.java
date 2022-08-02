@@ -17,6 +17,7 @@ public class HupperScreenHandler extends ScreenHandler {
         this(syncId, playerInventory, new SimpleInventory(5));
     }
 
+    // Creating the slots for the GUI.
     public HupperScreenHandler(int syncId, PlayerInventory playerInventory, Inventory inventory) {
         super(ScreenHandlerType.HOPPER, syncId);
         this.inventory = inventory;
@@ -44,6 +45,13 @@ public class HupperScreenHandler extends ScreenHandler {
         return this.inventory.canPlayerUse(player);
     }
 
+    /**
+     * If the player is trying to move an item from the inventory to the hotbar, or vice versa, then move the item
+     *
+     * @param player The player who is transferring the item
+     * @param index The index of the slot that the player is trying to move the item from.
+     * @return The itemstack that is being transferred.
+     */
     public ItemStack transferSlot(PlayerEntity player, int index) {
         ItemStack itemStack = ItemStack.EMPTY;
         Slot slot = (Slot)this.slots.get(index);

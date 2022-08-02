@@ -34,6 +34,12 @@ public class MushroomTreeDecorator extends BeehiveTreeDecorator {
         return BRANCH;
     }
 
+    /**
+     * If the random number generator generates a number less than the probability, then it will generate a mushroom
+     * parasite block at a random position in the tree
+     *
+     * @param generator The generator object.
+     */
     @Override
     public void generate(Generator generator) {
         Random random = generator.getRandom();

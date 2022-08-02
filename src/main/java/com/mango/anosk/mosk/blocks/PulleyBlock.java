@@ -23,6 +23,17 @@ public class PulleyBlock extends HorizontalFacingBlock implements BlockEntityPro
         stateManager.add(Properties.HORIZONTAL_FACING);
     }
 
+    /**
+     * If the block is facing north or south, return a cuboid shape that is 16 blocks wide, 13 blocks tall, and 16 blocks
+     * long. If the block is facing east or west, return a cuboid shape that is 16 blocks wide, 13 blocks tall, and 16
+     * blocks long. Otherwise, return a full cube.
+     *
+     * @param state The blockstate of the block
+     * @param view The world the block is in
+     * @param pos The position of the block.
+     * @param ctx The context of the shape.
+     * @return A VoxelShape that is a union of two cuboids.
+     */
     @Override
     public VoxelShape getOutlineShape(BlockState state, BlockView view, BlockPos pos, ShapeContext ctx) {
         Direction dir = state.get(FACING);

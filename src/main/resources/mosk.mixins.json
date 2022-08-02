@@ -8,6 +8,7 @@
     "JukeboxBlockMixin",
     "OverworldBiomeCreatorMixin",
     "PortalPlacerMixin",
+    "StatusEffectsMixin",
     "TreeDecoratorTypeMixin"
   ],
   "client": [

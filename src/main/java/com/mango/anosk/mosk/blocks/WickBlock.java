@@ -27,7 +27,7 @@ import java.util.concurrent.TimeUnit;
 
 public class WickBlock extends HorizontalFacingBlock {
 
-
+    // Declare the two properties of this block
     private static IntProperty status = IntProperty.of("status", 1, 3);
     public static final DirectionProperty FACING = HorizontalFacingBlock.FACING;
 
@@ -47,7 +47,7 @@ public class WickBlock extends HorizontalFacingBlock {
         return createCuboidShape(0, 0, 0, 16f, 1f, 16);
     }
 
-
+    // WIP -> Spawn a smoke particle when a Wick becomes lit
     public static void spawnSmokeParticle(World world, BlockPos pos, boolean isSignal, boolean lotsOfSmoke) {
         Random random = world.getRandom();
         if (lotsOfSmoke) {
@@ -55,6 +55,19 @@ public class WickBlock extends HorizontalFacingBlock {
         }
     }
 
+
+    /**
+     * If the player right clicks the block with a flint and steel, the block will change to the next state in the state
+     * manager
+     *
+     * @param state The current blockstate of the block
+     * @param world The world the block is in
+     * @param pos The position of the block
+     * @param player The player who interacted with the block
+     * @param hand The hand the player is using to interact with the block.
+     * @param hit The BlockHitResult object that contains information about the block that was hit.
+     * @return ActionResult.SUCCESS
+     */
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         if (player.getStackInHand(hand).getItem() == Items.FLINT_AND_STEEL) {
@@ -73,6 +86,17 @@ public class WickBlock extends HorizontalFacingBlock {
         return ActionResult.SUCCESS;
     }
 
+    /**
+     * When a block is placed next to a wick block or updated, it will check if the wick block is lit, and if it is, it will set the
+     * block to the lit version of itself, and if there is a TNT block next to it, it will light the TNT block
+     *
+     * @param state The current block state
+     * @param world The world the block is in
+     * @param pos The position of the block
+     * @param sourceBlock The block that is being updated
+     * @param sourcePos The position of the block that was placed
+     * @param notify Whether or not to notify the block of the update.
+     */
     @Override
     public void neighborUpdate(BlockState state, World world, BlockPos pos, Block sourceBlock, BlockPos sourcePos, boolean notify) {
         if (sourceBlock instanceof WickBlock && world.getBlockState(sourcePos).toString().contains("2")) {

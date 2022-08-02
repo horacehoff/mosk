@@ -20,6 +20,11 @@ public class LevelPropertiesMixin {
     /**
      * @author Just_a_Mango
      * @reason Remove the "here be dragons!" warning screen
+     *
+     * If the MoskConfig.skip_experimental_warning_screen is true, then return the stable lifecycle, otherwise return the
+     * lifecycle
+     *
+     * @return The lifecycle of the mod.
      */
     @Overwrite
     public Lifecycle getLifecycle() {

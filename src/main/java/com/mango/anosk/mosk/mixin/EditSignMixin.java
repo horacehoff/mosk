@@ -21,6 +21,16 @@ public class EditSignMixin {
     /**
      * @author Just_a_Mango
      * @reason Allow signs to be edited
+     *
+     * When a player right clicks a sign with a stone axe, the sign becomes editable
+     *
+     * @param state The block state of the block being interacted with.
+     * @param world The world the block is in
+     * @param pos The position of the block
+     * @param player The player who is using the sign
+     * @param hand The hand the player is using.
+     * @param hit The hit result of the block.
+     * @param cir The return value of the method.
      */
     @Inject(at = @At("HEAD"), method = "onUse")
     public void onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit, CallbackInfoReturnable<ActionResult> cir) {

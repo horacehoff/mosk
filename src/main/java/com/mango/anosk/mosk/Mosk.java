@@ -15,7 +15,6 @@ import org.slf4j.LoggerFactory;
 public class Mosk implements ModInitializer {
 	public static final String MOD_ID = "mosk";
 	public static final Logger LOGGER = LoggerFactory.getLogger("mosk");
-
 	public static void log(String in) {
 		LOGGER.info(in);
 	}
@@ -25,6 +24,7 @@ public class Mosk implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
+		// Initializing the mod.
 		MoskConfig.registerConfigs();
 		ModConfiguredFeatures.registerConfiguredFeatures();
 		LOGGER.info("Initializing Mosk..");

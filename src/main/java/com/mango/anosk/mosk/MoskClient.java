@@ -9,10 +9,11 @@ import net.fabricmc.fabric.api.client.rendering.v1.BlockEntityRendererRegistry;
 import software.bernie.geckolib3.renderers.geo.GeoItemRenderer;
 
 public class MoskClient implements ClientModInitializer {
+    /**
+     * Register the item renderer and block entity renderer for the pulley block.
+     */
     @Override
     public void onInitializeClient() {
-
-
         GeoItemRenderer.registerItemRenderer(Items.PULLEY_ITEM, new PulleyBlockItemRenderer());
         BlockEntityRendererRegistry.register(BlockEntities.PULLEY_BLOCK_ENTITY, PulleyBlockRenderer::new);
     }

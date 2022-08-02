@@ -3,15 +3,14 @@ package com.mango.anosk.mosk.blocks;
 import com.mango.anosk.mosk.blocks.entity.BlockEntities;
 import com.mango.anosk.mosk.blocks.entity.HupperBlockEntity;
 import net.minecraft.block.*;
-import net.minecraft.block.entity.*;
+import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.block.entity.BlockEntityTicker;
+import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.inventory.Inventory;
-import net.minecraft.inventory.SidedInventory;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.ItemStack;
 import net.minecraft.screen.ScreenHandler;
-import net.minecraft.stat.Stats;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.DirectionProperty;
@@ -25,10 +24,6 @@ import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
-
-import java.util.stream.IntStream;
-
-import static net.minecraft.block.entity.HopperBlockEntity.getInventoryAt;
 
 
 public class HupperBlock extends BlockWithEntity {
@@ -58,8 +53,21 @@ public class HupperBlock extends BlockWithEntity {
         setDefaultState(this.stateManager.getDefaultState().with(Properties.FACING, Direction.NORTH));
     }
 
+    /**
+     * "Return the VoxelShape of the Block based on the Block's direction."
+     *
+     * The first thing we do is check the Block's direction. We do this by using the `get()` function on the BlockState.
+     * This function takes in a Property as a parameter. In this case, we're using the `FACING` Property
+     *
+     * @param state The BlockState of the block
+     * @param world The world the block is in
+     * @param pos The position of the block
+     * @param context The context of the shape.
+     * @return The VoxelShape of the block.
+     */
     @Override
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
+        // Get the VoxelShapes based on the Block's direction
         switch (state.get(FACING)) {
             case DOWN: {
                 return DEFAULT_SHAPE;
@@ -95,6 +103,7 @@ public class HupperBlock extends BlockWithEntity {
         return DEFAULT_SHAPE;
     }
 
+    // Function responsible for the Tick function
     @Nullable
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
         return world.isClient ? null : checkType(type, BlockEntities.HUPPER_BLOCK_ENTITY, HupperBlockEntity::serverTick);
@@ -160,6 +169,14 @@ public class HupperBlock extends BlockWithEntity {
         }
     }
 
+    /**
+     * If the block is receiving redstone power, set the block's state to enabled. If the block is not receiving redstone
+     * power, set the block's state to disabled
+     *
+     * @param world The world the block is in
+     * @param pos The position of the block
+     * @param state The current state of the block.
+     */
     private void updateEnabled(World world, BlockPos pos, BlockState state) {
         boolean bl = world.isReceivingRedstonePower(pos);
         if (bl != (Boolean)state.get(ENABLED)) {
@@ -175,7 +192,6 @@ public class HupperBlock extends BlockWithEntity {
         } else if (world.getBlockEntity(pos.add(0, 0, 1)) instanceof HupperBlockEntity) {
             world.setBlockState(pos, (BlockState)state.with(ENABLED, bl), 4);
         }
-
     }
 
     @Override
@@ -184,6 +200,17 @@ public class HupperBlock extends BlockWithEntity {
 
     }
 
+    /**
+     * If the player right clicks on the block, open the GUI
+     *
+     * @param state The current state of the block
+     * @param world The world the block is in
+     * @param pos The position of the block
+     * @param player The player who interacted with the block
+     * @param hand The hand the player is using to interact with the block.
+     * @param hit The hit result of the block.
+     * @return ActionResult.SUCCESS
+     */
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         if (world.isClient) {
             return ActionResult.SUCCESS;

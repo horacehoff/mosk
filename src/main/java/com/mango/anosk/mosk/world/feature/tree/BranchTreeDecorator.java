@@ -36,6 +36,12 @@ public class BranchTreeDecorator extends BeehiveTreeDecorator {
         return BRANCH;
     }
 
+    /**
+     * If the random number generator generates a number less than the probability, then it will generate a birch log at a
+     * random position in the tree
+     *
+     * @param generator The generator object that contains all the information about the tree.
+     */
     @Override
     public void generate(TreeDecorator.Generator generator) {
 
