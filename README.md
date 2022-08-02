@@ -19,3 +19,4 @@ Mosk rose from a dream of a 'better minecraft mod'. Much like this dream, Mosk t
 - Cracked Stone Bricks Slabs/Stairs
 - Concrete and Terracotta Slabs/Stairs (https://feedback.minecraft.net/hc/en-us/community/posts/360010984931-Concrete-and-Terracotta-having-Slabs-Stairs-and-Walls)
 - Allow signs to be rewrote using a Stone Axe (https://feedback.minecraft.net/hc/en-us/community/posts/360011085651-Rewritable-signs-was-Text-on-signs-)
+- Levitation potion and glowing potion (https://feedback.minecraft.net/hc/en-us/community/posts/360009230072-Potion-of-Levitation-and-Glowing)
