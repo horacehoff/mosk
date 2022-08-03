@@ -26,7 +26,7 @@ public class ModConfiguredFeatures {
                     new StraightTrunkPlacer(6, 7, 5),
                     BlockStateProvider.of(Blocks.BIRCH_LEAVES),
                     new BlobFoliagePlacer(ConstantIntProvider.create(2), ConstantIntProvider.create(0), 4),
-                    new TwoLayersFeatureSize(1, 0, 2)).decorators(List.of(BEES, BRANCH, MUSHROOM)).build());
+                    new TwoLayersFeatureSize(1, 0, 2)).decorators(List.of(BRANCH, MUSHROOM)).build());
 
     public static final RegistryEntry<PlacedFeature> NEW_BIRCH_TREE_CHECKED =
             PlacedFeatures.register("new_birch_tree_checked", NEW_BIRCH_TREE,

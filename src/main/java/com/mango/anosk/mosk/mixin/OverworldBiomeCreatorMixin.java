@@ -98,11 +98,7 @@ public class OverworldBiomeCreatorMixin {
             DefaultBiomeFeatures.addDefaultGrass(builder);
         } else {
             if (birch) {
-                if (oldGrowth) {
-                    DefaultBiomeFeatures.addTallBirchTrees(builder);
-                } else {
-                    DefaultBiomeFeatures.addBirchTrees(builder);
-                }
+                // DefaultBiomeFeatures.addTallBirchTrees(builder);
             } else {
                 DefaultBiomeFeatures.addForestTrees(builder);
             }
