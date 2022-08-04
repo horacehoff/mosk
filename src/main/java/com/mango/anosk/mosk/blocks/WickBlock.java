@@ -33,7 +33,7 @@ public class WickBlock extends HorizontalFacingBlock {
 
     public WickBlock(Settings settings) {
         super(settings);
-        this.setDefaultState((BlockState)((BlockState)((BlockState)this.stateManager.getDefaultState()).with(FACING, Direction.NORTH).with(FACING, Direction.NORTH).with(status, 1)));
+        this.setDefaultState((BlockState)((BlockState)((BlockState)this.stateManager.getDefaultState()).with(FACING, Direction.NORTH).with(status, 1)));
     }
 
     @Override
@@ -57,7 +57,7 @@ public class WickBlock extends HorizontalFacingBlock {
 
 
     /**
-     * If the player right clicks the block with a flint and steel, the block will change to the next state in the state
+     * If the player right-clicks the block with a flint and steel, the block will change to the next state in the state
      * manager
      *
      * @param state The current blockstate of the block
@@ -113,17 +113,22 @@ public class WickBlock extends HorizontalFacingBlock {
                 }
                 // world.getServer().getCommandManager().execute(world.getServer().getCommandSource(), "fill "+sourcePos.getX()+" "+sourcePos.getY()+" "+sourcePos.getZ()+" "+sourcePos.getX()+" "+sourcePos.getY()+" "+sourcePos.getZ()+" minecraft:air");
                 if (world.getBlockState(pos.add(1,0, 0)).getBlock() instanceof TntBlock) {
-                    ((TntBlock) world.getBlockState(pos.add(1, 0, 0)).getBlock()).primeTnt(world, pos.add(1,0, 0));
+                    TntBlock.primeTnt(world, pos.add(1,0, 0));
                     world.setBlockState(pos.add(1, 0, 0), Blocks.AIR.getDefaultState());
+                    System.out.println("yikes");
                 } else if (world.getBlockState(pos.add(-1,0, 0)).getBlock() instanceof TntBlock) {
-                    ((TntBlock) world.getBlockState(pos.add(-1, 0, 0)).getBlock()).primeTnt(world, pos.add(-1,0, 0));
+                    System.out.println("yikes");
+                    TntBlock.primeTnt(world, pos.add(-1,0, 0));
                     world.setBlockState(pos.add(-1, 0, 0), Blocks.AIR.getDefaultState());
+                    System.out.println("yikes");
                 } else if (world.getBlockState(pos.add(0,0, -1)).getBlock() instanceof TntBlock) {
-                    ((TntBlock) world.getBlockState(pos.add(0, 0, -1)).getBlock()).primeTnt(world, pos.add(0, 0, -1));
+                    TntBlock.primeTnt(world, pos.add(0, 0, -1));
                     world.setBlockState(pos.add(0, 0, -1), Blocks.AIR.getDefaultState());
+                    System.out.println("yikes");
                 } else if (world.getBlockState(pos.add(0,0, 1)).getBlock() instanceof TntBlock) {
-                    ((TntBlock) world.getBlockState(pos.add(0, 0, 1)).getBlock()).primeTnt(world, pos.add(0,0, 1));
+                    TntBlock.primeTnt(world, pos.add(0,0, 1));
                     world.setBlockState(pos.add(0, 0, 1), Blocks.AIR.getDefaultState());
+                    System.out.println("yikes");
                 }
         }, 1, TimeUnit.SECONDS);
         }
